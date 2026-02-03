@@ -1,0 +1,228 @@
+/* =====================
+   SERVICES SECTION
+===================== */
+.services {
+  max-width: 1280px;
+  margin: 90px auto;              /* ⬇ reduced */
+  padding: 0 24px;
+}
+
+/* =====================
+   TITLE
+===================== */
+.services-title {
+  text-align: center;
+  font-size: 52px;
+  font-weight: 800;
+  color: #4b8f1d;
+  letter-spacing: 4px;
+  margin-bottom: 40px;            /* ⬇ reduced */
+}
+
+/* =====================
+   IMAGE
+===================== */
+.services-image {
+  max-width: 1100px;
+  margin: 0 auto 55px;            /* ⬇ reduced */
+}
+
+.services-image img {
+  width: 100%;
+  border-radius: 14px;
+}
+
+/* =====================
+   CONTENT GRID
+===================== */
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;                      /* ⬇ reduced */
+  align-items: flex-start;
+}
+
+/* =====================
+   COLUMN CARDS
+===================== */
+.services-col {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 32px 36px;             /* ⬇ reduced */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;                      /* ⬇ reduced */
+
+  box-shadow: 0 16px 34px rgba(0,0,0,0.06);
+}
+
+/* FORCE SINGLE CONTENT AXIS */
+.services-col h3,
+.services-col h4,
+.services-col p,
+.services-col ul {
+  max-width: 520px;
+}
+
+/* =====================
+   HEADINGS
+===================== */
+.services-col h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #4b8f1d;
+  letter-spacing: 1px;
+}
+
+.services-col h4 {
+  font-size: 17px;                /* ⬇ slightly reduced */
+  font-weight: 700;
+  color: #2f5d13;
+  position: relative;
+  padding-left: 12px;
+}
+
+.services-col h4::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 3px;
+  height: 70%;
+  background: #4b8f1d;
+  border-radius: 2px;
+}
+
+/* =====================
+   TEXT
+===================== */
+.services-col p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #333;
+}
+
+/* =====================
+   LISTS
+===================== */
+.services-col ul,
+.services-why ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;                       /* ⬇ reduced */
+
+  font-size: 15px;
+  color: #333;
+}
+
+.services-col li,
+.services-why li {
+  position: relative;
+  padding-left: 18px;
+  line-height: 1.55;
+}
+
+.services-col li::before,
+.services-why li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  color: #4b8f1d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* =====================
+   DIVIDER
+===================== */
+.services hr {
+  margin: 70px auto 45px;         /* ⬇ reduced */
+  border: none;
+  height: 1px;
+  max-width: 700px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #4b8f1d,
+    transparent
+  );
+}
+
+/* =====================
+   WHY US
+===================== */
+.services-why {
+  max-width: 720px;
+  margin: 0 auto;
+
+  padding: 34px 40px;             /* ⬇ reduced */
+  border-radius: 20px;
+
+  background: linear-gradient(
+    135deg,
+    #f4f9f1,
+    #ffffff
+  );
+
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+}
+
+.services-why h4 {
+  font-size: 20px;
+  font-weight: 800;
+  color: #4b8f1d;
+  margin-bottom: 14px;            /* ⬇ reduced */
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .services {
+    margin: 70px auto;            /* ⬇ reduced */
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;                    /* ⬇ reduced */
+  }
+
+  .services-col {
+    padding: 28px 24px;
+    box-shadow: none;
+    gap: 18px;
+  }
+
+  .services-image {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 500px) {
+  .services {
+    margin: 60px auto;
+  }
+
+  .services-title {
+    font-size: 32px;
+    margin-bottom: 28px;
+  }
+
+  .services-col p,
+  .services-col ul,
+  .services-why ul {
+    font-size: 14.5px;
+  }
+
+  .services-why {
+    padding: 26px 24px;
+  }
+}

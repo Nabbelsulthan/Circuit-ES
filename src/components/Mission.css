@@ -1,0 +1,163 @@
+/* =====================
+   MISSION SECTION
+===================== */
+.mission {
+  max-width: 1200px;
+  margin: 120px auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+/* =====================
+   BLOCK LAYOUT
+===================== */
+.mission-block {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 60px;
+  align-items: center;
+}
+
+.mission-block.reverse {
+  grid-template-columns: 1fr 420px;
+}
+
+/* =====================
+   TEXT
+===================== */
+.mission-text {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* MAIN TITLE */
+.mission-title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #4b8f1d; /* ✅ green ERSM heading */
+  line-height: 1.2;
+}
+
+/* SUB TITLE */
+.mission-subtitle {
+  font-size: 26px;
+  font-weight: 700;
+  color: #4b8f1d;
+}
+
+/* BODY TEXT */
+.mission-text span {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  max-width: 640px;
+}
+
+/* =====================
+   BULLETS
+===================== */
+.mission-points,
+.mission-applications {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.mission-points li,
+.mission-applications li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.mission-points li::before,
+.mission-applications li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+
+  color: #4b8f1d;
+  font-size: 1.3em;
+  line-height: 1;
+}
+
+/* =====================
+   IMAGES
+===================== */
+.mission-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* smaller second image */
+.mission-image.small img {
+  max-width: 320px;
+  margin-left: auto;
+}
+.mission-block.reverse .mission-text {
+  max-width: 100%;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .mission {
+    gap: 70px;
+  }
+
+  /* image first, content next (both blocks) */
+  .mission-block,
+  .mission-block.reverse {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .mission-image {
+    order: 1;
+  }
+
+  .mission-text {
+    order: 2;
+  }
+
+  .mission-image img {
+    max-height: 260px;
+    object-fit: cover;
+  }
+
+  .mission-image.small img {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .mission-title {
+    font-size: 24px;
+  }
+
+  .mission-subtitle {
+    font-size: 22px;
+  }
+
+  .mission-text span,
+  .mission-points,
+  .mission-applications {
+    font-size: 14.5px;
+  }
+}

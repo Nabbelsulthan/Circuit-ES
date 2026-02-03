@@ -1,0 +1,150 @@
+:root {
+  --green: #4b8f1d;
+  --dark: #0a2d3a;
+  --light: #f4f6f8;
+}
+
+/* =====================
+   HERO SECTION
+===================== */
+.hero {
+  background: linear-gradient(135deg, #ffffff 55%, var(--light) 100%);
+  padding: 100px 20px;
+}
+
+/* =====================
+   CONTAINER
+===================== */
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+/* =====================
+   LEFT CONTENT
+===================== */
+.hero-content {
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* LOGO */
+.hero-logo {
+  width: 400px;
+  margin-bottom: 36px;
+}
+
+/* HEADLINE */
+.hero-content h1 {
+  font-size: 46px;
+  line-height: 1.15;
+  color: var(--dark);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.hero-content h1 span {
+  color: var(--green);
+}
+
+/* SUBTITLE */
+.hero-subtitle {
+  font-size: 18px;
+  color: #555;
+  max-width: 460px;
+  margin-bottom: 32px;
+}
+
+/* INFO CARDS */
+.hero-info {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.info-card {
+  background: #ffffff;
+  padding: 18px 26px;
+  border-left: 4px solid var(--green);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  border-radius: 8px;
+  min-width: 220px;
+}
+
+.info-card span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green);
+  letter-spacing: 1px;
+}
+
+.info-card p {
+  margin: 8px 0 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #222;
+}
+
+/* =====================
+   RIGHT IMAGE
+===================== */
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 620px;
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+  display: block;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 900px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .hero-logo {
+    margin: 0 auto 32px;
+  }
+
+  .hero-subtitle {
+    margin: 0 auto 32px;
+  }
+
+  .hero-info {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 500px) {
+  .hero {
+    padding: 80px 16px;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .hero-logo {
+    width: 260px;
+  }
+}
