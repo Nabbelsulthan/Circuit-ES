@@ -1,30 +1,46 @@
+
 import "./About.css";
 import about from "../assets/about.png";
 
+import Vision from "./Vision";
+// import Mission from "./Mission";
+
 export default function About() {
   return (
-    <div className="about">
-      <h1>ABOUT US</h1>
+    <section className="about">
+      <h1 className="about-title">About Us</h1>
 
       <div className="about-content">
-        <img className="about-img" src={about} alt="About-us" />
+        {/* IMAGE */}
+        <div className="about-image-wrapper">
+          <img className="about-img" src={about} alt="About CircuitES" />
+        </div>
 
-        <p>A Brief Story About The Company</p>
+        {/* TEXT */}
+        <div className="about-text">
+          <h2>A Brief Story About the Company</h2>
+          <p>
+            Founded in 2024, CircuitES specializes in manufacturing and supplying
+            electrical and electronic systems for industries, institutions, and
+            domestic buildings. We continuously expand our product range to meet
+            customer needs with quality, reliability, and long-term satisfaction.
+          </p>
 
-        <span>
-          Founded in 2024, Circuites specializes in manufacturing and supplying
-          Electrical and Electronic Systems for industries, institutions, and
-          domestic buildings. We continuously expand our product range to meet
-          customer needs with quality, reliability, and satisfaction.
-        </span>
-
-        <p>Our Message</p>
-
-        <span>
-          We value strong partnerships with customers, suppliers, and employees
-          Flexibility, passion, and a challenging mindset drive our excellence
-        </span>
+          <h2>Our Message</h2>
+          <p>
+            We believe in building strong partnerships with customers, suppliers,
+            and employees. Flexibility, passion, and a challenging mindset drive
+            our commitment to excellence and innovation.
+          </p>
+        </div>
       </div>
-    </div>
+
+      <Vision/>
+
+    {/* <Mission/> */}
+    </section>
+
+    
   );
 }
+

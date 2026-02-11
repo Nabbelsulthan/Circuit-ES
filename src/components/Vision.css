@@ -1,135 +1,189 @@
-/* =====================
-   VISION SECTION
-===================== */
+.vision-section {
+  padding: 24px 20px;
+  background: #ffffff;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* MAIN TITLE */
+.vision-title {
+  text-align: center;
+  font-size: 46px;
+  color: #4b8f1d;
+  margin-bottom: 32px; /* reduced */
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+/* LAYOUT */
 .vision {
-  max-width: 1200px;
-  margin: 100px auto;
-  padding: 0 20px;
+  max-width: 1100px;
+  margin: auto;
   display: grid;
-  grid-template-columns: 1fr 260px; /* content | image */
-  gap: 64px;
+  grid-template-columns: 1fr 340px;
+  gap: 40px; /* reduced */
   align-items: center;
 }
 
-/* =====================
-   CONTENT (CENTERED BLOCK)
-===================== */
+/* CONTENT */
 .vision-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 680px;     /* centers the block */
-  margin: 0 auto;       /* centers the block */
-}
-
-
-/* HEADINGS */
-.vision-content p {
-  margin: 0;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  color: #4b8f1d;
-}
-
-/* BODY TEXT */
-.vision-content span {
+  gap: 12px; /* reduced */
   max-width: 680px;
-  font-size: 16px;
-  line-height: 1.8;
-  color: #444;
 }
 
-/* =====================
-   LISTS – PERFECTLY ALIGNED BULLETS
-===================== */
+/* SECTION HEADINGS */
+.vision-content h2 {
+  font-size: 26px;
+  color: #4b8f1d;
+  font-weight: 600;
+  margin: 0 0 8px; /* reduced */
+  letter-spacing: 0.03em;
+}
 
+/* PARAGRAPH */
+.vision-content p {
+  font-size: 17px;
+  line-height: 1.65; /* slightly tighter */
+  color: #444;
+  margin: 0 0 18px; /* reduced */
+  max-width: 540px;
+}
+
+/* LISTS */
 .vision-content ul {
-  list-style: none;        /* 🔑 removes native bullets */
-  margin: 0;
+  list-style: none;
   padding: 0;
-
+  margin: 0 0 18px; /* reduced */
   display: flex;
   flex-direction: column;
-  gap: 12px;
-
-  max-width: 680px;
-  font-size: 16px;
-  line-height: 1.7;
+  gap: 8px; /* reduced */
+  font-size: 17px;
+  line-height: 1.65;
   color: #444;
+  max-width: 540px;
 }
 
 .vision-content li {
   position: relative;
-  padding-left: 22px;      /* controlled indent */
-  text-align: left;
+  padding-left: 16px; /* reduced */
 }
 
 .vision-content li::before {
-  content: "•";            /* single bullet */
+  content: "›";
   position: absolute;
   left: 0;
-  top: 0.25em;             /* vertical alignment fix */
-
+  top: 0;
   color: #4b8f1d;
-  font-size: 1.3em;
-  line-height: 1;
+  font-weight: 700;
 }
 
-
-/* =====================
-   IMAGE (RIGHT CARD)
-===================== */
+/* IMAGE */
 .vision-image {
-  align-self: stretch;
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .vision-image img {
   width: 100%;
-  height: 100%;
-  max-height: 520px;
-  object-fit: cover;
-
-  border-radius: 20px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+  max-width: 420px; /* slightly reduced */
+  border-radius: 18px;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
 }
 
-/* =====================
-   RESPONSIVE (IMAGE ON TOP)
-===================== */
+/* ANIMATIONS */
+.fade-left {
+  animation: fadeLeft 0.6s ease forwards;
+}
+
+.fade-right {
+  animation: fadeRight 0.6s ease forwards;
+}
+
+@keyframes fadeLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeRight {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* RESPONSIVE */
 @media (max-width: 900px) {
   .vision {
     grid-template-columns: 1fr;
-    gap: 48px;
+    gap: 22px;
   }
 
-  .vision-image {
-    order: 1; /* image first */
+  /* Center headings only */
+  .vision-title {
+      text-align: center;
+  }
+  .vision-content h2 {
+    text-align: left;
   }
 
+  /* Content container */
   .vision-content {
-    order: 2;
+    align-items: stretch;
   }
 
-  .vision-image img {
-    height: 260px;
-    max-height: none;
+  /* Paragraphs: readable mobile alignment */
+  .vision-content p {
+    max-width: 100%;
+    margin: 0 auto 14px;
+    text-align: left;
+  }
+
+  /* Lists: clean mobile structure */
+  .vision-content ul {
+    margin: 0 auto 16px;
+    padding-left: 0;
+    text-align: left;
+  }
+
+  .vision-content li {
+    padding-left: 16px;
+  }
+
+  .vision-content li::before {
+    display: block;
+  }
+
+  /* Remove image on mobile */
+  .vision-image {
+    display: none;
   }
 }
 
 @media (max-width: 500px) {
-  .vision {
-    margin: 70px auto;
+  .vision-title {
+    font-size: 34px;
+    margin-bottom: 20px;
   }
 
-  .vision-content p {
-    font-size: 18px;
+  .vision-content h2 {
+    font-size: 21px;
+    margin-bottom: 6px;
   }
 
-  .vision-content span,
+  .vision-content p,
   .vision-content ul {
-    font-size: 14.5px;
+    font-size: 15.5px;
   }
 }
+

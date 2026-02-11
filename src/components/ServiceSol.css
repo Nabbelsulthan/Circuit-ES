@@ -1,83 +1,64 @@
-/* =====================
-   SERVICES SECTION
-===================== */
 .services {
   max-width: 1280px;
-  margin: 90px auto;              /* ⬇ reduced */
+  margin: 80px auto;
   padding: 0 24px;
 }
 
-/* =====================
-   TITLE
-===================== */
 .services-title {
   text-align: center;
-  font-size: 52px;
+  font-size: 48px;
   font-weight: 800;
   color: #4b8f1d;
-  letter-spacing: 4px;
-  margin-bottom: 40px;            /* ⬇ reduced */
+  letter-spacing: 3px;
+  margin-bottom: 36px;
 }
 
-/* =====================
-   IMAGE
-===================== */
 .services-image {
   max-width: 1100px;
-  margin: 0 auto 55px;            /* ⬇ reduced */
+  margin: 0 auto 48px;
 }
 
 .services-image img {
   width: 100%;
-  border-radius: 14px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* =====================
-   CONTENT GRID
-===================== */
 .services-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 56px;                      /* ⬇ reduced */
-  align-items: flex-start;
+  gap: 48px;
+  align-items: stretch;
 }
 
-/* =====================
-   COLUMN CARDS
-===================== */
 .services-col {
   background: #ffffff;
-  border-radius: 18px;
-  padding: 32px 36px;             /* ⬇ reduced */
+  border-radius: 20px;
+  padding: 34px 38px;
 
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;                      /* ⬇ reduced */
+  gap: 18px;
 
-  box-shadow: 0 16px 34px rgba(0,0,0,0.06);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.06);
 }
 
-/* FORCE SINGLE CONTENT AXIS */
 .services-col h3,
 .services-col h4,
 .services-col p,
 .services-col ul {
-  max-width: 520px;
+  max-width: 540px;
 }
 
-/* =====================
-   HEADINGS
-===================== */
 .services-col h3 {
-  font-size: 22px;
+  font-size: 23px;
   font-weight: 800;
   color: #4b8f1d;
   letter-spacing: 1px;
 }
 
 .services-col h4 {
-  font-size: 17px;                /* ⬇ slightly reduced */
+  font-size: 18px;
   font-weight: 700;
   color: #2f5d13;
   position: relative;
@@ -95,18 +76,12 @@
   border-radius: 2px;
 }
 
-/* =====================
-   TEXT
-===================== */
 .services-col p {
-  font-size: 15.5px;
-  line-height: 1.75;
+  font-size: 16px;
+  line-height: 1.7;
   color: #333;
 }
 
-/* =====================
-   LISTS
-===================== */
 .services-col ul,
 .services-why ul {
   list-style: none;
@@ -115,9 +90,9 @@
 
   display: flex;
   flex-direction: column;
-  gap: 8px;                       /* ⬇ reduced */
+  gap: 10px;
 
-  font-size: 15px;
+  font-size: 15.5px;
   color: #333;
 }
 
@@ -125,7 +100,7 @@
 .services-why li {
   position: relative;
   padding-left: 18px;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .services-col li::before,
@@ -136,18 +111,15 @@
   top: 0;
 
   color: #4b8f1d;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 700;
 }
 
-/* =====================
-   DIVIDER
-===================== */
 .services hr {
-  margin: 70px auto 45px;         /* ⬇ reduced */
+  margin: 64px auto 40px;
   border: none;
   height: 1px;
-  max-width: 700px;
+  max-width: 720px;
   background: linear-gradient(
     to right,
     transparent,
@@ -156,64 +128,54 @@
   );
 }
 
-/* =====================
-   WHY US
-===================== */
 .services-why {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
 
-  padding: 34px 40px;             /* ⬇ reduced */
-  border-radius: 20px;
+  padding: 32px 40px;
+  border-radius: 22px;
 
-  background: linear-gradient(
-    135deg,
-    #f4f9f1,
-    #ffffff
-  );
-
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #f3f8f0, #ffffff);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.08);
 }
 
 .services-why h4 {
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 800;
   color: #4b8f1d;
-  margin-bottom: 14px;            /* ⬇ reduced */
+  margin-bottom: 12px;
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
+/* Responsive */
+
 @media (max-width: 900px) {
   .services {
-    margin: 70px auto;            /* ⬇ reduced */
+    margin: 64px auto;
   }
 
   .services-grid {
     grid-template-columns: 1fr;
-    gap: 36px;                    /* ⬇ reduced */
+    gap: 32px;
   }
 
   .services-col {
-    padding: 28px 24px;
+    padding: 26px 22px;
     box-shadow: none;
-    gap: 18px;
   }
 
   .services-image {
-    margin-bottom: 40px;
+    margin-bottom: 36px;
   }
 }
 
 @media (max-width: 500px) {
   .services {
-    margin: 60px auto;
+    margin: 56px auto;
   }
 
   .services-title {
-    font-size: 32px;
-    margin-bottom: 28px;
+    font-size: 30px;
+    margin-bottom: 24px;
   }
 
   .services-col p,
@@ -223,6 +185,6 @@
   }
 
   .services-why {
-    padding: 26px 24px;
+    padding: 24px 22px;
   }
 }

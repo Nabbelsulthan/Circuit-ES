@@ -1,80 +1,107 @@
-/* =====================
-   ABOUT SECTION
-===================== */
 .about {
-  padding: 10px 20px;
+  padding: 30px 20px;
   background: #ffffff;
+  font-family: "Inter", "Segoe UI", sans-serif;
 }
 
-/* TITLE */
-.about h1 {
+.about-title {
   text-align: center;
-  font-size: 42px;
+  font-size: 46px;
   color: #4b8f1d;
-  margin-bottom: 64px;
+  margin-bottom: 48px;
   font-weight: 700;
+  letter-spacing: 0.08em;
 }
 
-/* =====================
-   CONTENT LAYOUT
-===================== */
+
 .about-content {
   max-width: 1100px;
   margin: auto;
-
   display: grid;
   grid-template-columns: 1fr 1.1fr;
-  column-gap: 64px;
-  row-gap: 24px;
-  align-items: start;
+  gap: 56px;
+  align-items: center;
 }
 
-/* IMAGE */
+
+.about-image-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .about-img {
   width: 100%;
+  max-width: 460px;
   border-radius: 20px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
-  grid-row: span 4; /* image spans full text height */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* SECTION HEADINGS */
-.about-content p {
-  font-size: 24px;
+
+.about-text h2 {
+  font-size: 26px;
   color: #4b8f1d;
   font-weight: 600;
-  margin: 0;
+  margin-bottom: 14px;
+  letter-spacing: 0.03em;
 }
 
-/* BODY TEXT */
-.about-content span {
-  font-size: 16px;
-  line-height: 1.7;
+.about-text p {
+  font-size: 17px;
+  line-height: 1.75;
   color: #444;
-  margin-bottom: 16px;
+  margin-bottom: 28px;
+  max-width: 540px;
 }
 
-/* =====================
-   RESPONSIVE
-===================== */
+
+/* RESPONSIVE */
 @media (max-width: 900px) {
+  .about {
+    padding: 28px 16px;
+  }
+
   .about-content {
     grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+
+  .about-title {
     text-align: center;
   }
 
-  .about-img {
-    max-width: 420px;
-    margin: 0 auto 32px;
-    grid-row: auto;
+
+  .about-text {
+    width: 100%;
+    padding-left: 20px;
+  }
+
+
+  .about-text h2 {
+    text-align: left;
+  }
+
+
+  .about-text p {
+    max-width: 100%;
+    margin: 0 auto 14px;
+    text-align: left;
   }
 }
 
 @media (max-width: 500px) {
-  .about h1 {
-    font-size: 32px;
+  .about-title {
+    font-size: 34px;
+    margin-bottom: 20px;
   }
 
-  .about-content p {
-    font-size: 20px;
+  .about-text h2 {
+    font-size: 21px;
+    margin-bottom: 6px;
+  }
+
+  .about-text p {
+    font-size: 15.5px;
   }
 }
+
