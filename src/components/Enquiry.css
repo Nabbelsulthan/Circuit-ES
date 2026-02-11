@@ -1,0 +1,130 @@
+.enquiry {
+  background: green;
+  padding: 72px 20px;
+  color: #ffffff;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+.enquiry-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+}
+
+/* ---------- FORM ---------- */
+
+.enquiry-form h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 26px;
+  letter-spacing: 0.08em;
+}
+
+.enquiry-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #d0d4dc;
+}
+
+.enquiry-form input,
+.enquiry-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  margin-bottom: 18px;
+  background: #f7f7f7;
+}
+
+.enquiry-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.enquiry-form button {
+  background: red;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.enquiry-form button:hover {
+  background: black;
+  transform: translateY(-2px);
+}
+
+/* ---------- INFO ---------- */
+
+.enquiry-info {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+
+}
+
+.info-block h4 {
+  font-size: 19px;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.info-block p {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #e2e4ea;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .enquiry {
+    padding: 52px 18px; /* tighter */
+  }
+
+  .enquiry-container {
+    grid-template-columns: 1fr;
+    gap: 36px; /* remove large empty space */
+  }
+
+  .enquiry-form h2 {
+    text-align: center;
+  }
+
+  .enquiry-info {
+    gap: 22px;
+  }
+}
+
+@media (max-width: 500px) {
+  .enquiry {
+    padding: 44px 16px;
+  }
+
+  .enquiry-form h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .enquiry-form input,
+  .enquiry-form textarea {
+    margin-bottom: 16px;
+  }
+
+  .info-block h4 {
+    font-size: 17px;
+  }
+
+  .info-block p {
+    font-size: 14.5px;
+  }
+}

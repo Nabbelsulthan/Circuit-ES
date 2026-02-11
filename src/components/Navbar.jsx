@@ -18,9 +18,8 @@ const pages = [
   { label: "ABOUT US", path: "/about" },
   { label: "PRODUCTS & SOLUTIONS", path: "/products" },
   { label: "SERVICES", path: "/services" },
-  { label: "INDUSTRIAL AUTOMATION", path: "/facilities" },
   { label: "SOLAR SERVICES", path: "/facilities" },
-  { label: "INFRASTRUCTURE", path: "/facilities" },
+  { label: "INFRASTRUCTURE", path: "/infra" },
   { label: "CONTACT US", path: "/contact" },
 ];
 
