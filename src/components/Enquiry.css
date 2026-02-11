@@ -103,6 +103,8 @@
   .enquiry-info {
     gap: 22px;
   }
+
+
 }
 
 @media (max-width: 500px) {
@@ -127,4 +129,10 @@
   .info-block p {
     font-size: 14.5px;
   }
+
+
 }
+
+
+
+

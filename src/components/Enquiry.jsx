@@ -3,13 +3,13 @@ import emailjs from "emailjs-com";
 
 export default function Enquiry() {
 
-  const sendWhatsApp = (form) => {
-    const name = form.elements.name.value;
-    const phone = form.elements.phone.value;
-    const email = form.elements.email.value;
-    const message = form.elements.message.value;
+    const sendWhatsApp = (form) => {
+        const name = form.elements.name.value;
+        const phone = form.elements.phone.value;
+        const email = form.elements.email.value;
+        const message = form.elements.message.value;
 
-    const whatsappMessage = `
+        const whatsappMessage = `
 New Enquiry from Circuit ES Website
 
 Name: ${name}
@@ -18,98 +18,114 @@ Email: ${email}
 Message: ${message || "N/A"}
     `;
 
-    const whatsappNumber = "919578584038";
-    const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      whatsappMessage
-    )}`;
+        const whatsappNumber = "919578584038";
+        const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+            whatsappMessage
+        )}`;
 
-    window.open(whatsappURL, "_blank");
-
-      form.reset();
-  };
-
-  const sendEmail = (form) => {
-    emailjs
-      .sendForm(
-        "service_nf3vqx9",
-        "template_sujmqxr",
-        form,
-        "MOZnzkgNphGRu6ODI"
-      )
-      .then(() => {
-        alert("Email sent successfully!");
+        window.open(whatsappURL, "_blank");
         form.reset();
-      })
-      .catch((error) => {
-        console.error(error);
-        alert("Email failed. Check EmailJS config.");
-      });
-  };
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
+    const sendEmail = (form) => {
+        emailjs
+            .sendForm(
+                "service_nf3vqx9",
+                "template_sujmqxr",
+                form,
+                "MOZnzkgNphGRu6ODI"
+            )
+            .then(() => {
+                alert("Enquiry sent successfully!");
+                form.reset();
+            })
+            .catch((error) => {
+                console.error(error);
+                alert("Email failed. Please try again.");
+            });
+    };
 
-  return (
-    <section className="enquiry">
-      <div className="enquiry-container">
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-        <form className="enquiry-form" onSubmit={handleSubmit}>
-          <h2>FOR QUICK ENQUIRY</h2>
+        const form = e.target;
 
-          <label>Name *</label>
-          <input name="name" required />
 
-          <label>Phone *</label>
-          <input name="phone" required />
+        if (!form.checkValidity()) {
+            form.reportValidity();
+            return;
+        }
 
-          <label>Email *</label>
-          <input name="email" type="email" required />
+        const action = form.dataset.action;
 
-          <label>Message</label>
-          <textarea name="message"></textarea>
+        if (action === "whatsapp") {
+            sendWhatsApp(form);
+        }
 
-          <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
-            <button
-              type="button"
-              onClick={(e) => sendWhatsApp(e.target.form)}
-            >
-              SEND VIA WHATSAPP
-            </button>
+        if (action === "email") {
+            sendEmail(form);
+        }
+    };
 
-            <button
-              type="button"
-              onClick={(e) => sendEmail(e.target.form)}
-            >
-              SEND VIA EMAIL
-            </button>
-          </div>
-        </form>
+    return (
+        <section className="enquiry">
+            <div className="enquiry-container">
 
-        {/* CONTACT INFO */}
-        <div className="enquiry-info">
-          <div className="info-block">
-            <h4>Address</h4>
-            <p>
-              13/247, Kanavaipudur,<br />
-              Omalur,<br />
-              Salem – 636354<br />
-              Tamil Nadu
-            </p>
-          </div>
+                <form className="enquiry-form" onSubmit={handleSubmit}>
+                    <h2>FOR QUICK ENQUIRY</h2>
 
-          <div className="info-block">
-            <h4>Phone</h4>
-            <p>+91 80-72127505</p>
-          </div>
+                    <label>Name *</label>
+                    <input name="name" required />
 
-          <div className="info-block">
-            <h4>Email</h4>
-            <p>info@circuitses.com</p>
-          </div>
-        </div>
+                    <label>Phone *</label>
+                    <input name="phone" required />
 
-      </div>
-    </section>
-  );
+                    <label>Email *</label>
+                    <input name="email" type="email" required />
+
+                    <label>Message</label>
+                    <textarea name="message"></textarea>
+
+                    <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+                        <button
+                            type="submit"
+                            onClick={(e) => (e.target.form.dataset.action = "whatsapp")}
+                        >
+                            SEND VIA WHATSAPP
+                        </button>
+
+                        <button
+                            type="submit"
+                            onClick={(e) => (e.target.form.dataset.action = "email")}
+                        >
+                            SEND VIA EMAIL
+                        </button>
+                    </div>
+                </form>
+
+                <div className="enquiry-info">
+                    <div className="info-block">
+                        <h4>Address</h4>
+                        <p>
+                            13/247, Kanavaipudur,<br />
+                            Omalur,<br />
+                            Salem – 636354<br />
+                            Tamil Nadu
+                        </p>
+                    </div>
+
+                    <div className="info-block">
+                        <h4>Phone</h4>
+                        <p>+91 80-72127505</p>
+                    </div>
+
+                    <div className="info-block">
+                        <h4>Email</h4>
+                        <p>info@circuitses.com</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    );
 }
