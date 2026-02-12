@@ -1,0 +1,92 @@
+.footer {
+  margin-top: 0;
+  padding: 26px 20px;
+  position: relative;
+  z-index: 2;
+
+  background: #111; /* strong base */
+  color: #e6e6e6;
+
+  border-top: 2px solid #4b8f1d;
+}
+
+/* subtle inner glow */
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(75,143,29,0.12),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+/* container */
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 14.5px;
+  letter-spacing: 0.03em;
+}
+
+/* left side */
+.footer-left p {
+  font-weight: 500;
+  color: #dcdcdc;
+}
+
+/* right side */
+.footer-right p {
+  color: #bdbdbd;
+}
+
+/* LinkedIn link */
+.footer-right a {
+  color: #4b8f1d;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 6px;
+  transition: all 0.3s ease;
+}
+
+.footer-right a:hover {
+  color: #ffffff;
+}
+
+/* subtle separator line */
+.footer-container::after {
+  content: "";
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 1px;
+  background: rgba(255,255,255,0.05);
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 22px 16px;
+  }
+
+  .footer-left p,
+  .footer-right p {
+    font-size: 13.5px;
+  }
+}

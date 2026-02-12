@@ -1,38 +1,134 @@
-.App {
-  text-align: center;
+/* ================= GLOBAL RESET ================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  overflow-x: hidden;
+  background: #ffffff;
+}
+
+/* ================= APP LAYOUT ================= */
+
+.app-layout {
+  position: relative;
+  min-height: 100vh;
+  z-index: 1;
+  animation: pageFade 0.6s ease;
+}
+
+/* ================= BASE PREMIUM BACKGROUND ================= */
+
+.app-layout::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+
+  background:
+    radial-gradient(circle at 85% 5%, rgba(75,143,29,0.25), transparent 35%),
+    radial-gradient(circle at 10% 90%, rgba(75,143,29,0.18), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(75,143,29,0.05), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, #f4f9f2 100%);
+
+  animation: ambientMove 18s ease-in-out infinite alternate;
+}
+
+/* ================= ENGINEERING GRID ================= */
+
+.app-layout::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -4;
   pointer-events: none;
+
+  background-image:
+    linear-gradient(rgba(75,143,29,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75,143,29,0.04) 1px, transparent 1px);
+
+  background-size: 100px 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* ================= INDUSTRIAL DIAGONAL LAYER ================= */
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 700px;
+  height: 100vh;
+  z-index: -3;
+
+  background: linear-gradient(
+    120deg,
+    rgba(75,143,29,0.07),
+    rgba(75,143,29,0.02),
+    transparent
+  );
+
+  transform: skewX(-18deg);
+}
+
+/* Secondary diagonal depth */
+body::after {
+  content: "";
+  position: fixed;
+  bottom: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  z-index: -2;
+
+  background: radial-gradient(
+    circle,
+    rgba(75,143,29,0.10),
+    transparent 70%
+  );
+}
+
+/* ================= AMBIENT ANIMATION ================= */
+
+@keyframes ambientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 5% 5%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* ================= PAGE FADE ================= */
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes pageFade {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= RESPONSIVE TUNING ================= */
+
+@media (max-width: 900px) {
+  .app-layout::after {
+    background-size: 70px 70px;
+  }
+
+  body::before {
+    width: 450px;
+  }
+
+  body::after {
+    width: 400px;
+    height: 400px;
   }
 }

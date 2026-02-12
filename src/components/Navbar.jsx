@@ -1,4 +1,3 @@
-
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -12,40 +11,76 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useLocation } from "react-router-dom";
 
 import Logo from "../assets/circuitES1-logo.png";
+import "./Navbar.css";
+
+
+import CloseIcon from "@mui/icons-material/Close";
+import HomeIcon from "@mui/icons-material/Home";
+import InfoIcon from "@mui/icons-material/Info";
+import BuildIcon from "@mui/icons-material/Build";
+import SolarPowerIcon from "@mui/icons-material/SolarPower";
+import BusinessIcon from "@mui/icons-material/Business";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
+import InventoryIcon from "@mui/icons-material/Inventory";
+
 
 const pages = [
   { label: "HOME", path: "/" },
   { label: "ABOUT US", path: "/about" },
   { label: "PRODUCTS & SOLUTIONS", path: "/products" },
   { label: "SERVICES", path: "/services" },
-  { label: "SOLAR SERVICES", path: "/facilities" },
+  { label: "SOLAR SERVICES", path: "/solarservice" },
   { label: "INFRASTRUCTURE", path: "/infra" },
   { label: "CONTACT US", path: "/contact" },
 ];
 
+const iconMap = {
+  "/": <HomeIcon />,
+  "/about": <InfoIcon />,
+  "/products": <InventoryIcon />,
+  "/services": <BuildIcon />,
+  "/facilities": <SolarPowerIcon />,
+  "/infra": <BusinessIcon />,
+  "/contact": <ContactMailIcon />,
+};
+
+
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 40);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <AppBar
       position="fixed"
       elevation={0}
+      className={`custom-navbar ${scrolled ? "navbar-scrolled" : ""}`}
       sx={{
-        backgroundColor: "white",
-        py: { xs: 2, md: 3 }, // more breathing room for big logo
-        borderBottom: "1px solid #eee",
+        transition: "all 0.4s ease",
+        py: scrolled ? { xs: 1, md: 1.2 } : { xs: 2, md: 3 },
       }}
     >
+
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{
             flexDirection: "column",
-            gap: { xs: 2, md: 3 },
+            gap: scrolled ? 1.5 : 2.5,
+            transition: "all 0.3s ease",
           }}
         >
-          {/* ================= MOBILE HEADER ================= */}
+
+          {/* MOBILE HEADER */}
           <Box
             sx={{
               width: "100%",
@@ -55,88 +90,116 @@ function ResponsiveAppBar() {
               position: "relative",
             }}
           >
-            {/* Hamburger (left) */}
             <IconButton
               onClick={(e) => setAnchorElNav(e.currentTarget)}
-              sx={{
-                position: "absolute",
-                left: 0,
-                color: "black",
-              }}
+              sx={{ position: "absolute", left: 0 }}
             >
               <MenuIcon />
             </IconButton>
 
-            {/* Centered Logo (BIGGER) */}
             <Box component={Link} to="/">
               <Box
                 component="img"
                 src={Logo}
                 alt="Circuit ES Logo"
                 sx={{
-                  height: 60, // ⬅️ increased for mobile
-                  maxWidth: "100%",
+                  height: scrolled ? 45 : 60,
+                  transition: "all 0.3s ease",
                 }}
               />
             </Box>
           </Box>
 
-          {/* ================= MOBILE MENU ================= */}
-          <Menu
+          {/* MOBILE MENU */}
+          {/* <Menu
             anchorEl={anchorElNav}
             open={Boolean(anchorElNav)}
             onClose={() => setAnchorElNav(null)}
-            PaperProps={{
-              sx: {
-                backgroundColor: "white",
-                mt: 1,
-                minWidth: 240,
-                borderRadius: 2,
-                boxShadow: "0 12px 35px rgba(0,0,0,0.12)",
-              },
-            }}
             sx={{ display: { xs: "block", md: "none" } }}
           >
-            {pages.map((page) => {
-              const isActive = location.pathname === page.path;
+            {pages.map((page) => (
+              <MenuItem
+                key={page.label}
+                component={Link}
+                to={page.path}
+                onClick={() => setAnchorElNav(null)}
+              >
+                {page.label}
+              </MenuItem>
+            ))}
+          </Menu> */}
 
-              return (
-                <MenuItem
-                  key={page.label}
-                  component={Link}
-                  to={page.path}
-                  onClick={() => setAnchorElNav(null)}
-                  sx={{
-                    fontWeight: 600,
-                    letterSpacing: "0.08em",
-                    color: isActive ? "black" : "green",
-                    position: "relative",
-                    py: 1.5,
-                    "&::after": {
-                      content: '""',
-                      position: "absolute",
-                      left: 16,
-                      bottom: 6,
-                      width: isActive ? "40%" : "0%",
-                      height: "2px",
-                      backgroundColor: "black",
-                      transition: "width 0.3s ease",
-                    },
-                    "&:hover": {
-                      color: "black",
-                    },
-                    "&:hover::after": {
-                      width: "40%",
-                    },
-                  }}
-                >
-                  {page.label}
-                </MenuItem>
-              );
-            })}
-          </Menu>
+          {/* <Menu
+  anchorEl={anchorElNav}
+  open={Boolean(anchorElNav)}
+  onClose={() => setAnchorElNav(null)}
+  PaperProps={{
+    className: "mobile-menu-paper"
+  }}
+  MenuListProps={{
+    className: "mobile-menu-list"
+  }}
+  sx={{ display: { xs: "block", md: "none" } }}
+>
+  {pages.map((page) => {
+    const isActive = location.pathname === page.path;
 
-          {/* ================= DESKTOP LOGO ================= */}
+    return (
+      <MenuItem
+        key={page.label}
+        component={Link}
+        to={page.path}
+        onClick={() => setAnchorElNav(null)}
+        className={`mobile-menu-item ${isActive ? "active" : ""}`}
+      >
+        {page.label}
+      </MenuItem>
+    );
+  })}
+</Menu> */}
+
+
+<Menu
+  anchorEl={anchorElNav}
+  open={Boolean(anchorElNav)}
+  onClose={() => setAnchorElNav(null)}
+  PaperProps={{
+    className: "premium-mobile-menu",
+  }}
+  sx={{
+    display: { xs: "block", md: "none" },
+  }}
+>
+  <Box className="mobile-menu-header">
+    <IconButton onClick={() => setAnchorElNav(null)}>
+      <CloseIcon />
+    </IconButton>
+  </Box>
+
+  {pages.map((page, index) => {
+    const isActive = location.pathname === page.path;
+
+    return (
+      <MenuItem
+        key={page.label}
+        component={Link}
+        to={page.path}
+        onClick={() => setAnchorElNav(null)}
+        className={`premium-menu-item ${isActive ? "active" : ""}`}
+        style={{ animationDelay: `${index * 0.08}s` }}
+      >
+        <span className="menu-icon">
+          {iconMap[page.path]}
+        </span>
+        {page.label}
+      </MenuItem>
+    );
+  })}
+</Menu>
+
+
+
+          {/* DESKTOP LOGO */}
           <Box
             component={Link}
             to="/"
@@ -147,17 +210,13 @@ function ResponsiveAppBar() {
               src={Logo}
               alt="Circuit ES Logo"
               sx={{
-                height: 120, // ⬅️ BIG desktop logo
-                maxWidth: "100%",
-                transition: "transform 0.4s ease",
-                "&:hover": {
-                  transform: "scale(1.06)", // subtle (logo already large)
-                },
+                height: scrolled ? 85 : 120,
+                transition: "all 0.3s ease",
               }}
             />
           </Box>
 
-          {/* ================= DESKTOP NAV ================= */}
+          {/* DESKTOP NAV */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -173,28 +232,14 @@ function ResponsiveAppBar() {
                   component={Link}
                   to={page.path}
                   sx={{
-                    position: "relative",
                     fontWeight: 600,
                     letterSpacing: "0.08em",
-                    color: isActive ? "black" : "green",
+                    color: isActive ? "#000" : "#4b8f1d",
                     textDecoration: "none",
-                    transition: "all 0.3s ease",
-                    "&::after": {
-                      content: '""',
-                      position: "absolute",
-                      left: 0,
-                      bottom: -6,
-                      width: isActive ? "100%" : "0%",
-                      height: "2px",
-                      backgroundColor: "black",
-                      transition: "width 0.3s ease",
-                    },
+                    fontSize: scrolled ? "0.9rem" : "1rem",
+                    transition: "all 0.2s ease",
                     "&:hover": {
-                      color: "black",
-                      transform: "translateY(-3px)",
-                    },
-                    "&:hover::after": {
-                      width: "100%",
+                      color: "#000",
                     },
                   }}
                 >
@@ -203,6 +248,7 @@ function ResponsiveAppBar() {
               );
             })}
           </Box>
+
         </Toolbar>
       </Container>
     </AppBar>
@@ -210,4 +256,3 @@ function ResponsiveAppBar() {
 }
 
 export default ResponsiveAppBar;
-

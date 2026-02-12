@@ -1,0 +1,161 @@
+.custom-navbar.MuiAppBar-root {
+  background: linear-gradient(
+      180deg,
+      rgba(248, 250, 247, 0.98) 0%,
+      rgba(232, 240, 230, 0.98) 100%
+    ) !important;
+
+  backdrop-filter: blur(18px) !important;
+
+  border-bottom: 1px solid rgba(75, 143, 29, 0.25) !important;
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.08),
+    0 4px 12px rgba(0, 0, 0, 0.05) !important;
+
+  transition: all 0.4s ease;
+}
+
+/* SCROLLED */
+.navbar-scrolled.MuiAppBar-root {
+  background: linear-gradient(
+      180deg,
+      rgba(220, 235, 218, 1) 0%,
+      rgba(205, 225, 200, 1) 100%
+    ) !important;
+
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.12),
+    0 6px 16px rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Top highlight line */
+.custom-navbar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #4b8f1d,
+    transparent
+  );
+}
+
+/* Bottom accent */
+.custom-navbar::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    #4b8f1d,
+    rgba(75, 143, 29, 0.4),
+    transparent
+  );
+}
+
+/* ================= FULLSCREEN OVERLAY ================= */
+
+.premium-mobile-menu {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  width: 85vw !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  padding: 30px 0 !important;
+
+  background: linear-gradient(
+    135deg,
+    #0f1412,
+    #182019
+  ) !important;
+
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4) !important;
+
+  animation: slideInMenu 0.4s ease forwards;
+}
+
+/* Slide animation */
+@keyframes slideInMenu {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Header (close button area) */
+.mobile-menu-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 24px 20px 24px;
+}
+
+.mobile-menu-header .MuiIconButton-root {
+  color: white;
+}
+
+/* ================= MENU ITEMS ================= */
+
+.premium-menu-item {
+  font-weight: 600 !important;
+  letter-spacing: 0.08em !important;
+  padding: 18px 32px !important;
+  font-size: 0.95rem !important;
+  color: #cde3c4 !important;
+
+  display: flex !important;
+  align-items: center;
+  gap: 14px;
+
+  opacity: 0;
+  transform: translateX(20px);
+  animation: fadeSlide 0.4s ease forwards;
+
+  transition: all 0.25s ease !important;
+}
+
+/* Stagger animation */
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Icons */
+.menu-icon {
+  color: #4b8f1d;
+  display: flex;
+  align-items: center;
+}
+
+/* Hover */
+.premium-menu-item:hover {
+  background: rgba(75, 143, 29, 0.12) !important;
+  color: #ffffff !important;
+  transform: translateX(6px);
+}
+
+/* Active page */
+.premium-menu-item.active {
+  color: #ffffff !important;
+  background: rgba(75, 143, 29, 0.18) !important;
+  box-shadow: inset 4px 0 0 #4b8f1d;
+}
+
+/* Green glow on active */
+.premium-menu-item.active .menu-icon {
+  color: #4b8f1d;
+  filter: drop-shadow(0 0 6px rgba(75, 143, 29, 0.6));
+}

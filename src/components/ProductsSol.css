@@ -1,0 +1,147 @@
+.products {
+  padding: 50px 20px;
+  max-width: 1150px;
+  margin: auto;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* ---------- CARD LAYOUT ---------- */
+
+.product-card {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 55px;
+}
+
+.product-card.reverse .product-text {
+  order: 2;
+}
+
+.product-card.reverse .product-image {
+  order: 1;
+}
+
+.product-card.single {
+  grid-template-columns: 1fr;
+}
+
+/* ---------- TEXT ---------- */
+
+.product-text h2 {
+  font-size: 32px;
+  color: #4b8f1d;
+  margin-bottom: 18px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.product-text p {
+  font-size: 19px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 20px;
+  font-weight: 400;
+}
+
+.product-text ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-text li {
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;     /* ✅ Bold points */
+  color: #222;
+}
+
+.product-text li::before {
+  content: "›";
+  position: absolute;
+  left: 0;
+  color: #4b8f1d;
+  font-weight: 700;
+}
+
+/* ---------- IMAGE ---------- */
+
+.product-image img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* ---------- INSTRUMENTATION SECTION ---------- */
+
+.product-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 45px;
+  margin-top: 25px;
+}
+
+.product-columns h3 {
+  font-size: 22px;
+  color: #4b8f1d;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 900px) {
+  .products {
+    padding: 40px 18px;
+  }
+
+  .product-card {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 45px;
+  }
+
+  .product-card.reverse .product-text,
+  .product-card.reverse .product-image {
+    order: unset;
+  }
+
+  .product-columns {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .product-text h2 {
+    font-size: 26px;
+  }
+
+  .product-text p {
+    font-size: 17px;
+  }
+
+  .product-text li {
+    font-size: 16px;
+  }
+
+  .product-columns h3 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 500px) {
+  .product-text h2 {
+    font-size: 22px;
+  }
+
+  .product-text p {
+    font-size: 16px;
+  }
+
+  .product-text li {
+    font-size: 15px;
+  }
+}
