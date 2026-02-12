@@ -14,6 +14,7 @@ import ProductsSol from './components/ProductsSol';
 import ScrollToTop from "./components/ScrollToTop";
 
 import Footer from "./components/Footer";
+import SolarServices from './components/SolarServices';
 
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route path="/services" element={<ServiceSol />} />
           <Route path="/contact" element={<Enquiry />} />
           <Route path="/products" element={<ProductsSol />} />
+             <Route path="/solarservice" element={<SolarServices />} />
         </Routes>
 
         <Footer/>

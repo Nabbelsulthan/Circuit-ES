@@ -39,7 +39,7 @@ const iconMap = {
   "/about": <InfoIcon />,
   "/products": <InventoryIcon />,
   "/services": <BuildIcon />,
-  "/facilities": <SolarPowerIcon />,
+  "/solarservice": <SolarPowerIcon />,
   "/infra": <BusinessIcon />,
   "/contact": <ContactMailIcon />,
 };

@@ -1,0 +1,144 @@
+.solar {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: auto;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* HEADER */
+.solar-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.solar-header h1 {
+  font-size: 46px;
+  font-weight: 700;
+  color: #4b8f1d;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.solar-header p {
+  max-width: 760px;
+  margin: auto;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* GRID */
+.solar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-bottom: 70px;
+}
+
+/* CARD */
+.solar-card {
+  background: #ffffff;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.solar-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+.solar-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+/* CONTENT */
+.solar-content {
+  padding: 26px 24px;
+}
+
+.solar-content h2 {
+  font-size: 22px;
+  color: #4b8f1d;
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.solar-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* AMC */
+.solar-amc {
+  background: linear-gradient(135deg, #f4f9f2, #ffffff);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.solar-amc h2 {
+  font-size: 24px;
+  color: #4b8f1d;
+  margin-bottom: 16px;
+}
+
+.solar-amc p {
+  font-size: 16px;
+  line-height: 1.75;
+  max-width: 800px;
+  margin: auto;
+  color: #444;
+}
+
+/* ANIMATION */
+.fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .solar-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .solar {
+    padding: 60px 16px;
+  }
+
+  .solar-header h1 {
+    font-size: 34px;
+  }
+
+  .solar-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .solar-image img {
+    height: 200px;
+  }
+
+  .solar-amc {
+    padding: 30px 20px;
+  }
+}
