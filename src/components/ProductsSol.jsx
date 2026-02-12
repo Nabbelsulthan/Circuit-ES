@@ -6,6 +6,9 @@ export default function ProductsSol() {
   return (
     <section className="products">
 
+            {/* -------- SECTION TITLE -------- */}
+      <h1 className="products-title">PRODUCTS & SOLUTIONS</h1>
+
       {/* -------- LT PANEL -------- */}
       <div className="product-card">
 

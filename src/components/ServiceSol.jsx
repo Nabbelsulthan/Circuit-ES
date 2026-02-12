@@ -20,7 +20,7 @@ export default function ServiceSol() {
         <div className="services-col">
           <h3>ENCLOSURE SOLUTIONS</h3>
           <p>
-            Circuites provides a wide range of high-quality enclosures—from
+            CircuitsES provides a wide range of high-quality enclosures—from
             industrial to fully customized solutions—designed for secure indoor
             and weatherproof outdoor applications.
           </p>

@@ -99,6 +99,8 @@ body {
   margin-top: 40px;
 }
 
+
+
 .info-card {
   padding: 16px 22px;
   border-radius: 14px;
@@ -224,7 +226,7 @@ body {
   }
 
   .info-card span {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     letter-spacing: 0.18em;
   }
 
