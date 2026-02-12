@@ -39,7 +39,7 @@ Message: ${message || "N/A"}
         form.reset();
     };
 
-    // const sendEmail = (form) => {
+
     //     emailjs
     //         .sendForm(
     //             "service_nf3vqx9",
@@ -108,6 +108,26 @@ Message: ${message || "N/A"}
             return;
         }
 
+        const email = form.elements.email.value.trim();
+
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+        if (!emailRegex.test(email)) {
+            setSnackbar({
+                show: true,
+                message: "Please enter a valid email address.",
+                type: "error",
+            });
+
+            setTimeout(() => {
+                setSnackbar({ show: false, message: "", type: "" });
+            }, 3000);
+
+            return;
+        }
+
         const action = form.dataset.action;
 
         if (action === "whatsapp") {
@@ -138,7 +158,18 @@ Message: ${message || "N/A"}
                     <input name="name" required />
 
                     <label>Phone *</label>
-                    <input name="phone" required />
+                    {/* <input name="phone" required /> */}
+
+                    <input
+                        name="phone"
+                        required
+                        pattern="[0-9]{10}"
+                        inputMode="numeric"
+                        onInput={(e) => {
+                            e.target.value = e.target.value.replace(/[^0-9]/g, "");
+                        }}
+                    />
+
 
                     <label>Email *</label>
                     <input name="email" type="email" required />
@@ -198,3 +229,9 @@ Message: ${message || "N/A"}
         </section>
     );
 }
+
+
+
+
+
+// const sendEmail = (form) => {
