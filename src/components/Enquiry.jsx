@@ -155,7 +155,8 @@ Message: ${message || "N/A"}
                     <h2>FOR QUICK ENQUIRY</h2>
 
                     <label>Name *</label>
-                    <input name="name" required />
+                    <input name="name" required placeholder="Full Name"
+                    />
 
                     <label>Phone *</label>
                     {/* <input name="phone" required /> */}
@@ -163,6 +164,8 @@ Message: ${message || "N/A"}
                     <input
                         name="phone"
                         required
+                        placeholder="Mobile Number (10 digits)"
+
                         pattern="[0-9]{10}"
                         inputMode="numeric"
                         onInput={(e) => {
@@ -172,10 +175,12 @@ Message: ${message || "N/A"}
 
 
                     <label>Email *</label>
-                    <input name="email" type="email" required />
+                    <input name="email" type="email" required placeholder="Email Address"
+                    />
 
                     <label>Message</label>
-                    <textarea name="message"></textarea>
+                    <textarea name="message" placeholder="Type your enquiry here..."
+                    ></textarea>
 
                     <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
                         <button
