@@ -1,7 +1,19 @@
 import "./Enquiry.css";
 import emailjs from "emailjs-com";
+import { useState } from "react";
+
 
 export default function Enquiry() {
+
+    const [loading, setLoading] = useState(false);
+    const [snackbar, setSnackbar] = useState({
+        show: false,
+        message: "",
+        type: "", // success | error
+    });
+
+
+
 
     const sendWhatsApp = (form) => {
         const name = form.elements.name.value;
@@ -27,7 +39,29 @@ Message: ${message || "N/A"}
         form.reset();
     };
 
+    // const sendEmail = (form) => {
+    //     emailjs
+    //         .sendForm(
+    //             "service_nf3vqx9",
+    //             "template_sujmqxr",
+    //             form,
+    //             "MOZnzkgNphGRu6ODI"
+    //         )
+    //         .then(() => {
+    //             alert("Enquiry sent successfully!");
+    //             form.reset();
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //             alert("Email failed. Please try again.");
+    //         });
+    // };
+
+
+
     const sendEmail = (form) => {
+        setLoading(true);
+
         emailjs
             .sendForm(
                 "service_nf3vqx9",
@@ -36,14 +70,32 @@ Message: ${message || "N/A"}
                 "MOZnzkgNphGRu6ODI"
             )
             .then(() => {
-                alert("Enquiry sent successfully!");
+                setSnackbar({
+                    show: true,
+                    message: "Enquiry sent successfully!",
+                    type: "success",
+                });
+
                 form.reset();
             })
             .catch((error) => {
                 console.error(error);
-                alert("Email failed. Please try again.");
+
+                setSnackbar({
+                    show: true,
+                    message: "Email failed. Please try again.",
+                    type: "error",
+                });
+            })
+            .finally(() => {
+                setLoading(false);
+
+                setTimeout(() => {
+                    setSnackbar({ show: false, message: "", type: "" });
+                }, 3000);
             });
     };
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -68,7 +120,15 @@ Message: ${message || "N/A"}
     };
 
     return (
+
         <section className="enquiry">
+
+            {snackbar.show && (
+                <div className={`snackbar ${snackbar.type}`}>
+                    {snackbar.message}
+                </div>
+            )}
+
             <div className="enquiry-container">
 
                 <form className="enquiry-form" onSubmit={handleSubmit}>
@@ -94,12 +154,21 @@ Message: ${message || "N/A"}
                             SEND VIA WHATSAPP
                         </button>
 
-                        <button
+                        {/* <button
                             type="submit"
                             onClick={(e) => (e.target.form.dataset.action = "email")}
                         >
                             SEND VIA EMAIL
+                        </button> */}
+
+                        <button
+                            type="submit"
+                            disabled={loading}
+                            onClick={(e) => (e.target.form.dataset.action = "email")}
+                        >
+                            {loading ? "SENDING..." : "SEND VIA EMAIL"}
                         </button>
+
                     </div>
                 </form>
 

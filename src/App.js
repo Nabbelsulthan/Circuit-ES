@@ -17,6 +17,7 @@ import Footer from "./components/Footer";
 import SolarServices from './components/SolarServices';
 
 import { useLocation } from "react-router-dom";
+import Infrastructure from './components/Infrastructure';
 
 
 function AppContent() {
@@ -32,7 +33,7 @@ function AppContent() {
         sx={{
           height: {
             xs: isHome ? "120px" : "80px",
-            md: isHome ? "180px" : "80px",
+            md: isHome ? "180px" : "90px",
           },
         }}
       />
@@ -44,6 +45,7 @@ function AppContent() {
         <Route path="/contact" element={<Enquiry />} />
         <Route path="/products" element={<ProductsSol />} />
         <Route path="/solarservice" element={<SolarServices />} />
+        <Route path="/infrastructure" element={<Infrastructure />} />
       </Routes>
 
       <Footer />

@@ -504,7 +504,7 @@ const pages = [
   { label: "PRODUCTS & SOLUTIONS", path: "/products" },
   { label: "SERVICES", path: "/services" },
   { label: "SOLAR SERVICES", path: "/solarservice" },
-  { label: "INFRASTRUCTURE", path: "/infra" },
+  { label: "INFRASTRUCTURE", path: "/infrastructure" },
   { label: "CONTACT US", path: "/contact" },
 ];
 
@@ -514,7 +514,7 @@ const iconMap = {
   "/products": <InventoryIcon />,
   "/services": <BuildIcon />,
   "/solarservice": <SolarPowerIcon />,
-  "/infra": <BusinessIcon />,
+  "/infrastructure": <BusinessIcon />,
   "/contact": <ContactMailIcon />,
 };
 

@@ -134,5 +134,40 @@
 }
 
 
+/* ---------- SNACKBAR ---------- */
+
+.snackbar {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 26px;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+  z-index: 9999;
+  animation: fadeInUp 0.3s ease;
+}
+
+.snackbar.success {
+  background: #28a745;
+}
+
+.snackbar.error {
+  background: #dc3545;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
 
 
