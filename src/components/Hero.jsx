@@ -33,15 +33,17 @@ const Hero = () => {
           {/* INFO CARDS */}
           <div className="hero-info">
             <div className="info-card">
-              <span>WEBSITE</span>
+              <span>E-mail</span>
               <p>
-                <a
+
+                <p>info@circuitses.com</p>
+                {/* <a
                   href="https://www.circuitses.com"
                   target="_blank"
                   rel="noreferrer"
                 >
                   www.circuitses.com
-                </a>
+                </a> */}
               </p>
             </div>
 

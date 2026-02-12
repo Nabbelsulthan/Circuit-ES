@@ -8,7 +8,10 @@ export default function ProductsSol() {
 
       {/* -------- LT PANEL -------- */}
       <div className="product-card">
+
+
         <div className="product-text">
+          
           <h2>LT PANEL (Low Tension Panel)</h2>
 
           <p>

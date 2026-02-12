@@ -7,7 +7,7 @@ export default function Footer() {
 
         <div className="footer-left">
           <p>
-            © {new Date().getFullYear()} Circuit ES. All Rights Reserved.
+            © {new Date().getFullYear()} CircuitsES. All Rights Reserved.
           </p>
         </div>
 

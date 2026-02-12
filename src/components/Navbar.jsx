@@ -259,6 +259,221 @@
 
 
 
+// import * as React from "react";
+// import AppBar from "@mui/material/AppBar";
+// import Box from "@mui/material/Box";
+// import Toolbar from "@mui/material/Toolbar";
+// import IconButton from "@mui/material/IconButton";
+// import Typography from "@mui/material/Typography";
+// import Menu from "@mui/material/Menu";
+// import MenuItem from "@mui/material/MenuItem";
+// import Container from "@mui/material/Container";
+// import MenuIcon from "@mui/icons-material/Menu";
+// import { Link, useLocation } from "react-router-dom";
+
+// import Logo from "../assets/circuitES1-logo.png";
+// import "./Navbar.css";
+
+// import CloseIcon from "@mui/icons-material/Close";
+// import HomeIcon from "@mui/icons-material/Home";
+// import InfoIcon from "@mui/icons-material/Info";
+// import BuildIcon from "@mui/icons-material/Build";
+// import SolarPowerIcon from "@mui/icons-material/SolarPower";
+// import BusinessIcon from "@mui/icons-material/Business";
+// import ContactMailIcon from "@mui/icons-material/ContactMail";
+// import InventoryIcon from "@mui/icons-material/Inventory";
+
+// const pages = [
+//   { label: "HOME", path: "/" },
+//   { label: "ABOUT US", path: "/about" },
+//   { label: "PRODUCTS & SOLUTIONS", path: "/products" },
+//   { label: "SERVICES", path: "/services" },
+//   { label: "SOLAR SERVICES", path: "/solarservice" },
+//   { label: "INFRASTRUCTURE", path: "/infra" },
+//   { label: "CONTACT US", path: "/contact" },
+// ];
+
+// const iconMap = {
+//   "/": <HomeIcon />,
+//   "/about": <InfoIcon />,
+//   "/products": <InventoryIcon />,
+//   "/services": <BuildIcon />,
+//   "/solarservice": <SolarPowerIcon />,
+//   "/infra": <BusinessIcon />,
+//   "/contact": <ContactMailIcon />,
+// };
+
+// function ResponsiveAppBar() {
+//   const [anchorElNav, setAnchorElNav] = React.useState(null);
+//   const [scrolled, setScrolled] = React.useState(false);
+//   const location = useLocation();
+
+//   React.useEffect(() => {
+//     const handleScroll = () => {
+//       setScrolled(window.scrollY > 40);
+//     };
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   return (
+//     <AppBar
+//       position="fixed"
+//       elevation={0}
+//       className={`custom-navbar ${scrolled ? "navbar-scrolled" : ""}`}
+//       sx={{
+//         transition: "all 0.4s ease",
+//         py: scrolled ? { xs: 1, md: 1.2 } : { xs: 3, md: 4 },
+//       }}
+//     >
+//       <Container maxWidth="xl">
+//         <Toolbar
+//           disableGutters
+//           sx={{
+//             width: "100%",
+//             transition: "all 0.4s ease",
+//             flexDirection: scrolled ? "row" : "column",
+//             alignItems: "center",
+//             justifyContent: scrolled ? "space-between" : "center",
+//             gap: scrolled ? 0 : 2,
+//           }}
+//         >
+//           {/* ================= MOBILE HEADER ================= */}
+//           <Box
+//             sx={{
+//               width: "100%",
+//               display: { xs: "flex", md: "none" },
+//               alignItems: "center",
+//               justifyContent: "center",
+//               position: "relative",
+//             }}
+//           >
+//             <IconButton
+//               onClick={(e) => setAnchorElNav(e.currentTarget)}
+//               sx={{ position: "absolute", left: 0 }}
+//             >
+//               <MenuIcon />
+//             </IconButton>
+
+//             <Box component={Link} to="/">
+//               <Box
+//                 component="img"
+//                 src={Logo}
+//                 alt="Circuit ES Logo"
+//                 sx={{
+//                   height: scrolled ? 45 : 60,
+//                   transition: "all 0.4s ease",
+//                 }}
+//               />
+//             </Box>
+//           </Box>
+
+//           {/* ================= DESKTOP LOGO ================= */}
+//           <Box
+//             component={Link}
+//             to="/"
+//             sx={{
+//               display: { xs: "none", md: "block" },
+//               transition: "all 0.4s ease",
+//             }}
+//           >
+//             <Box
+//               component="img"
+//               src={Logo}
+//               alt="Circuit ES Logo"
+//               sx={{
+//                 height: scrolled ? 70 : 110,
+//                 transition: "all 0.4s ease",
+//               }}
+//             />
+//           </Box>
+
+//           {/* ================= DESKTOP NAV ================= */}
+//           <Box
+//             sx={{
+//               display: { xs: "none", md: "flex" },
+//               gap: scrolled ? 4 : 5,
+//               alignItems: "center",
+//               justifyContent: "center",
+//               whiteSpace: "nowrap",
+//               mt: scrolled ? 0 : 1,
+//               transition: "all 0.4s ease",
+//             }}
+//           >
+//             {pages.map((page) => {
+//               const isActive = location.pathname === page.path;
+
+//               return (
+//                 <Typography
+//                   key={page.label}
+//                   component={Link}
+//                   to={page.path}
+//                   sx={{
+//                     fontWeight: 600,
+//                     letterSpacing: "0.08em",
+//                     color: isActive ? "#000" : "#4b8f1d",
+//                     textDecoration: "none",
+//                     fontSize: scrolled ? "0.9rem" : "1rem",
+//                     transition: "all 0.3s ease",
+//                     "&:hover": {
+//                       color: "#000",
+//                       transform: "translateY(-2px)",
+//                     },
+//                   }}
+//                 >
+//                   {page.label}
+//                 </Typography>
+//               );
+//             })}
+//           </Box>
+
+//           {/* ================= MOBILE MENU ================= */}
+//           <Menu
+//             anchorEl={anchorElNav}
+//             open={Boolean(anchorElNav)}
+//             onClose={() => setAnchorElNav(null)}
+//             PaperProps={{
+//               className: "premium-mobile-menu",
+//             }}
+//             sx={{ display: { xs: "block", md: "none" } }}
+//           >
+//             <Box className="mobile-menu-header">
+//               <IconButton onClick={() => setAnchorElNav(null)}>
+//                 <CloseIcon />
+//               </IconButton>
+//             </Box>
+
+//             {pages.map((page, index) => {
+//               const isActive = location.pathname === page.path;
+
+//               return (
+//                 <MenuItem
+//                   key={page.label}
+//                   component={Link}
+//                   to={page.path}
+//                   onClick={() => setAnchorElNav(null)}
+//                   className={`premium-menu-item ${isActive ? "active" : ""}`}
+//                   style={{ animationDelay: `${index * 0.08}s` }}
+//                 >
+//                   <span className="menu-icon">
+//                     {iconMap[page.path]}
+//                   </span>
+//                   {page.label}
+//                 </MenuItem>
+//               );
+//             })}
+//           </Menu>
+//         </Toolbar>
+//       </Container>
+//     </AppBar>
+//   );
+// }
+
+// export default ResponsiveAppBar;
+
+
+
+
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -308,10 +523,14 @@ function ResponsiveAppBar() {
   const [scrolled, setScrolled] = React.useState(false);
   const location = useLocation();
 
+  const isHome = location.pathname === "/";
+  const isLanding = isHome && !scrolled;
+
   React.useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -320,10 +539,10 @@ function ResponsiveAppBar() {
     <AppBar
       position="fixed"
       elevation={0}
-      className={`custom-navbar ${scrolled ? "navbar-scrolled" : ""}`}
+      className={`custom-navbar ${!isLanding ? "navbar-scrolled" : ""}`}
       sx={{
         transition: "all 0.4s ease",
-        py: scrolled ? { xs: 1, md: 1.2 } : { xs: 3, md: 4 },
+        py: isLanding ? { xs: 3, md: 4 } : { xs: 1, md: 1.2 },
       }}
     >
       <Container maxWidth="xl">
@@ -332,12 +551,13 @@ function ResponsiveAppBar() {
           sx={{
             width: "100%",
             transition: "all 0.4s ease",
-            flexDirection: scrolled ? "row" : "column",
+            flexDirection: isLanding ? "column" : "row",
             alignItems: "center",
-            justifyContent: scrolled ? "space-between" : "center",
-            gap: scrolled ? 0 : 2,
+            justifyContent: isLanding ? "center" : "space-between",
+            gap: isLanding ? 2 : 0,
           }}
         >
+
           {/* ================= MOBILE HEADER ================= */}
           <Box
             sx={{
@@ -361,7 +581,7 @@ function ResponsiveAppBar() {
                 src={Logo}
                 alt="Circuit ES Logo"
                 sx={{
-                  height: scrolled ? 45 : 60,
+                  height: isLanding ? 60 : 45,
                   transition: "all 0.4s ease",
                 }}
               />
@@ -375,6 +595,7 @@ function ResponsiveAppBar() {
             sx={{
               display: { xs: "none", md: "block" },
               transition: "all 0.4s ease",
+              flexShrink: 0,
             }}
           >
             <Box
@@ -382,7 +603,7 @@ function ResponsiveAppBar() {
               src={Logo}
               alt="Circuit ES Logo"
               sx={{
-                height: scrolled ? 70 : 110,
+                height: isLanding ? 110 : 70,
                 transition: "all 0.4s ease",
               }}
             />
@@ -392,11 +613,11 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
-              gap: scrolled ? 4 : 5,
+              gap: isLanding ? 5 : 4,
               alignItems: "center",
               justifyContent: "center",
               whiteSpace: "nowrap",
-              mt: scrolled ? 0 : 1,
+              mt: isLanding ? 1 : 0,
               transition: "all 0.4s ease",
             }}
           >
@@ -413,7 +634,7 @@ function ResponsiveAppBar() {
                     letterSpacing: "0.08em",
                     color: isActive ? "#000" : "#4b8f1d",
                     textDecoration: "none",
-                    fontSize: scrolled ? "0.9rem" : "1rem",
+                    fontSize: isLanding ? "1rem" : "0.9rem",
                     transition: "all 0.3s ease",
                     "&:hover": {
                       color: "#000",
@@ -429,6 +650,7 @@ function ResponsiveAppBar() {
 
           {/* ================= MOBILE MENU ================= */}
           <Menu
+            key={location.pathname} 
             anchorEl={anchorElNav}
             open={Boolean(anchorElNav)}
             onClose={() => setAnchorElNav(null)}
@@ -463,6 +685,7 @@ function ResponsiveAppBar() {
               );
             })}
           </Menu>
+
         </Toolbar>
       </Container>
     </AppBar>
@@ -470,5 +693,3 @@ function ResponsiveAppBar() {
 }
 
 export default ResponsiveAppBar;
-
-
