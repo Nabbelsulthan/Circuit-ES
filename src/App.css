@@ -30,9 +30,9 @@ body {
   z-index: -5;
 
   background:
-    radial-gradient(circle at 85% 5%, rgba(75,143,29,0.25), transparent 35%),
-    radial-gradient(circle at 10% 90%, rgba(75,143,29,0.18), transparent 45%),
-    radial-gradient(circle at 50% 50%, rgba(75,143,29,0.05), transparent 60%),
+    radial-gradient(circle at 85% 5%, rgba(75, 143, 29, 0.25), transparent 35%),
+    radial-gradient(circle at 10% 90%, rgba(75, 143, 29, 0.18), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(75, 143, 29, 0.05), transparent 60%),
     linear-gradient(180deg, #ffffff 0%, #f4f9f2 100%);
 
   animation: ambientMove 18s ease-in-out infinite alternate;
@@ -48,8 +48,8 @@ body {
   pointer-events: none;
 
   background-image:
-    linear-gradient(rgba(75,143,29,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(75,143,29,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(75, 143, 29, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(75, 143, 29, 0.04) 1px, transparent 1px);
 
   background-size: 100px 100px;
 }
@@ -65,12 +65,10 @@ body::before {
   height: 100vh;
   z-index: -3;
 
-  background: linear-gradient(
-    120deg,
-    rgba(75,143,29,0.07),
-    rgba(75,143,29,0.02),
-    transparent
-  );
+  background: linear-gradient(120deg,
+      rgba(75, 143, 29, 0.07),
+      rgba(75, 143, 29, 0.02),
+      transparent);
 
   transform: skewX(-18deg);
 }
@@ -85,11 +83,9 @@ body::after {
   height: 600px;
   z-index: -2;
 
-  background: radial-gradient(
-    circle,
-    rgba(75,143,29,0.10),
-    transparent 70%
-  );
+  background: radial-gradient(circle,
+      rgba(75, 143, 29, 0.10),
+      transparent 70%);
 }
 
 /* ================= AMBIENT ANIMATION ================= */
@@ -98,6 +94,7 @@ body::after {
   0% {
     background-position: 0% 0%;
   }
+
   100% {
     background-position: 5% 5%;
   }
@@ -110,6 +107,7 @@ body::after {
     opacity: 0;
     transform: translateY(12px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
