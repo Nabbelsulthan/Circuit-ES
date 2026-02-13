@@ -21,8 +21,8 @@ export default function Enquiry() {
         const email = form.elements.email.value;
         const message = form.elements.message.value;
 
-        const whatsappMessage = `
-New Enquiry from CircuitsES Website
+        const whatsappMessage = `New Enquiry from CircuitsES Website
+
 
 Name: ${name}
 Phone: ${phone}
