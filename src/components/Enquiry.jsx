@@ -22,7 +22,7 @@ export default function Enquiry() {
         const message = form.elements.message.value;
 
         const whatsappMessage = `
-New Enquiry from Circuit ES Website
+New Enquiry from CircuitsES Website
 
 Name: ${name}
 Phone: ${phone}
