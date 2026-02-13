@@ -24,6 +24,8 @@ export default function Enquiry() {
         const whatsappMessage = `New Enquiry from CircuitsES Website
 
 
+
+
 Name: ${name}
 Phone: ${phone}
 Email: ${email}
