@@ -22,14 +22,14 @@ export default function Enquiry() {
         const message = form.elements.message.value;
 
         const whatsappMessage = `New Enquiry from CircuitsES Website
-        
+
 Name: ${name}
 Phone: ${phone}
 Email: ${email}
 Message: ${message || "N/A"}
     `;
 
-        const whatsappNumber = "919578584038";
+        const whatsappNumber = "918072127505";
         const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
             whatsappMessage
         )}`;
