@@ -1,7 +1,7 @@
 import "./ProductsSol.css";
 // import img1 from "../assets/products1.jpeg";
 import img2 from "../assets/products2.png";
-import img3 from "../assets/ltpanel.JPEG"
+import img3 from "../assets/ltpanel.jpeg"
 
 export default function ProductsSol() {
   return (
