@@ -208,6 +208,7 @@ Message: ${message || "N/A"}
                 </form>
 
                 <div className="enquiry-info">
+                    <h1>Location</h1>
                     <div className="info-block">
                         <h4>Registered Address</h4>
                         <p>
@@ -219,7 +220,7 @@ Message: ${message || "N/A"}
 
                         <br/>
 
-                        <h4>Principal Place of Business</h4>
+                        <h4>Factory Address</h4>
                         <p>
                             No.553/141,<br/>
                             Begapalli-Nallur Agaraharam Road, Begepalli Village,<br/>
