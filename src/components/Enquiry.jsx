@@ -209,12 +209,23 @@ Message: ${message || "N/A"}
 
                 <div className="enquiry-info">
                     <div className="info-block">
-                        <h4>Address</h4>
+                        <h4>Registered Address</h4>
                         <p>
                             13/247, Kanavaipudur,<br />
                             Omalur,<br />
                             Salem – 636354<br />
                             Tamil Nadu
+                        </p>
+
+                        <br/>
+
+                        <h4>Principal Place of Business</h4>
+                        <p>
+                            No.553/141,<br/>
+                            Begapalli-Nallur Agaraharam Road, Begepalli Village,<br/>
+                            Hosur-635126,<br/>
+                            Krishnagiri District,<br/>
+                            Tamil Nadu.
                         </p>
                     </div>
 
