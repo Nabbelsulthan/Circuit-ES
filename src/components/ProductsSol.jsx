@@ -1,6 +1,7 @@
 import "./ProductsSol.css";
-import img1 from "../assets/products1.jpeg";
+// import img1 from "../assets/products1.jpeg";
 import img2 from "../assets/products2.png";
+import img3 from "../assets/ltpanel.JPEG"
 
 export default function ProductsSol() {
   return (
@@ -33,7 +34,7 @@ export default function ProductsSol() {
         </div>
 
         <div className="product-image">
-          <img src={img1} alt="LT Panel" />
+          <img src={img3} alt="LT Panel" />
         </div>
       </div>
 
