@@ -93,7 +93,7 @@ export default function Infrastructure() {
         <div className="infra-note-card">
           <h3>Note*</h3>
           <p>
-            VMR Enterprises is a sister concern of CircuitsES Energy System Private Limited,
+            VMR Enterprises is a sister concern of Circuits Energy System Private Limited,
             established to complement and strengthen the group's overall capabilities.
             Together, the companies leverage shared knowledge, resources, and industry
             experience to deliver consistent value and trusted solutions.
