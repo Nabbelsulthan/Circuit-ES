@@ -19,6 +19,8 @@ import SolarServices from './components/SolarServices';
 import { useLocation } from "react-router-dom";
 import Infrastructure from './components/Infrastructure';
 
+import FloatingWhatsApp from './components/FloatingWhatsApp';
+
 
 function AppContent() {
   const location = useLocation();
@@ -47,7 +49,7 @@ function AppContent() {
         <Route path="/solarservice" element={<SolarServices />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
       </Routes>
-
+      <FloatingWhatsApp />
       <Footer />
     </div>
   );
