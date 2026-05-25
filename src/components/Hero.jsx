@@ -16,10 +16,19 @@ const Hero = () => {
             Electrical Solutions <span>Never Before</span>
           </h1>
 
+          {/* <h1 className="hero-title">
+            Industrial Control Panel & Electrical Enclosure Manufacturers in Hosur
+          </h1> */}
+
           <p className="hero-subtitle">
             Powering industries with intelligent electrical and energy systems
             built for reliability, efficiency, and the future.
           </p>
+
+          {/* <p className="hero-subtitle">
+  Circuits Energy System delivers PCC, MCC, PLC, APFC and VFD panel
+  manufacturing solutions for industries across Tamil Nadu and Karnataka.
+</p> */}
 
           <div className="hero-actions">
             <a href="/about" className="hero-btn primary">
@@ -34,7 +43,7 @@ const Hero = () => {
           <div className="hero-info">
             <div className="info-card">
               <span>E-mail</span>
-              <p>
+           
 
                 <p>info@circuitses.com</p>
                 {/* <a
@@ -44,7 +53,7 @@ const Hero = () => {
                 >
                   www.circuitses.com
                 </a> */}
-              </p>
+           
             </div>
 
             <div className="info-card">
@@ -56,15 +65,15 @@ const Hero = () => {
 
         {/* RIGHT IMAGE */}
         <div className="hero-image">
-          <img src={heroImg} alt="Electrical Engineering Solutions" />
+          <img src={heroImg} alt="Industrial electrical control panel manufacturing at CircuitsES Hosur" />
         </div>
       </div>
 
-      <br/>
+      <br />
 
-       <br/>
+      <br />
 
-      <Enquiry/>
+      <Enquiry />
     </section>
   );
 };

@@ -223,7 +223,7 @@ Message: ${message || "N/A"}
                         <h4>Factory Address</h4>
                         <p>
                             No.553/141,<br/>
-                            Begapalli-Nallur Agaraharam Road, Begepalli Village,<br/>
+                            Begapalli-Nallur Agaraharam Road, Begapalli Village,<br/>
                             Hosur-635126,<br/>
                             Krishnagiri District,<br/>
                             Tamil Nadu.
@@ -244,10 +244,11 @@ Message: ${message || "N/A"}
             </div>
         </section>
     );
+
+
 }
 
 
 
 
 
-// const sendEmail = (form) => {
