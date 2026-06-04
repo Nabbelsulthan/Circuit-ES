@@ -1,10 +1,20 @@
-import { Link } from "react-router-dom";
+
+
+
+import { Link, useLocation } from "react-router-dom";
 import "./CESConnectFloat.css";
 
 export default function CESConnectFloat() {
+  const location = useLocation();
+
+  if (location.pathname.startsWith("/ces-connect")) {
+    return null;
+  }
+
   return (
     <Link
-      to="/ces-connect"
+    //   to="/ces-connect"
+      to="/portal"
       className="ces-connect-float"
     >
       <div className="portal-icon">
