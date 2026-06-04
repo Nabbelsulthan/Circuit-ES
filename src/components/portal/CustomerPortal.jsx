@@ -1,78 +1,145 @@
+
+
+
 import "./CustomerPortal.css";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Logo from "../../assets/circuitES1-logo.png";
 
 export default function CustomerPortal() {
-
   const navigate = useNavigate();
+
+  const [companyId, setCompanyId] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    // Temporary hardcoded login
-    navigate("/ces-connect");
+    if (!companyId || !username || !password) {
+      setError("Please fill all fields.");
+      return;
+    }
+
+    if (
+      companyId === "BITSOL001" &&
+      username === "bitsol" &&
+      password === "bitsol123"
+    ) {
+      localStorage.setItem("customer", "Bitsol");
+
+      navigate("/ces-connect");
+    } else {
+      setError("Invalid credentials.");
+    }
   };
 
   return (
     <div className="portal-page">
+      <div className="portal-overlay"></div>
 
-      <div className="portal-card">
+      <div className="portal-container">
 
-        <div className="portal-header">
+        <div className="portal-info">
+
+          <img
+            src={Logo}
+            alt="Circuits Energy System"
+            className="portal-logo"
+          />
 
           <h1>CES Connect</h1>
 
+          <h2>Bitsol Customer Portal</h2>
+
           <p>
-            Secure Customer Access Portal
+            Welcome to the secure customer portal for
+            monitoring project progress, drawings,
+            FAT reports and dispatch updates.
           </p>
+
+          <div className="portal-features">
+            <div>✓ Project Tracking</div>
+            <div>✓ FAT Reports</div>
+            <div>✓ Drawings & Documents</div>
+            <div>✓ Dispatch Updates</div>
+          </div>
 
         </div>
 
-        <form onSubmit={handleLogin}>
+        <div className="portal-card">
 
-          <div className="form-group">
+          <h3>Customer Login</h3>
 
-            <label>Company ID</label>
+          <p>
+            Sign in to access your Bitsol projects.
+          </p>
 
-            <input
-              type="text"
-              placeholder="TVS001"
-            />
+          <form onSubmit={handleLogin}>
 
+            <div className="form-group">
+              <label>Company ID</label>
+              <input
+                type="text"
+                placeholder="Enter your company ID"
+                value={companyId}
+                onChange={(e) =>
+                  setCompanyId(e.target.value)
+                }
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Username</label>
+              <input
+                type="text"
+                placeholder="Enter your username"
+                value={username}
+                onChange={(e) =>
+                  setUsername(e.target.value)
+                }
+              />
+            </div>
+
+            <div className="form-group">
+              <label>Password</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                value={password}
+                onChange={(e) =>
+                  setPassword(e.target.value)
+                }
+              />
+            </div>
+
+            {error && (
+              <div className="login-error">
+                {error}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              className="login-btn"
+            >
+              Login to CES Connect
+            </button>
+
+          </form>
+
+          <div className="portal-help">
+            Need Access?
+            <a href="/contact">
+              Contact Circuits ES
+            </a>
           </div>
 
-          <div className="form-group">
-
-            <label>Username</label>
-
-            <input
-              type="text"
-              placeholder="Enter username"
-            />
-
-          </div>
-
-          <div className="form-group">
-
-            <label>Password</label>
-
-            <input
-              type="password"
-              placeholder="Enter password"
-            />
-
-          </div>
-
-          <button
-            type="submit"
-            className="login-btn"
-          >
-            Login
-          </button>
-
-        </form>
+        </div>
 
       </div>
-
     </div>
   );
 }

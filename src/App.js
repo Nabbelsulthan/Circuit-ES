@@ -27,6 +27,8 @@ import CESConnectFloat from './components/CESConnectFloat';
 
 import CustomerPortal from "./components/portal/CustomerPortal";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
 
 function AppContent() {
   const location = useLocation();
@@ -55,7 +57,14 @@ function AppContent() {
         <Route path="/solarservice" element={<SolarServices />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
         <Route path="/portal" element={<CustomerPortal />} />
-        <Route path="/ces-connect" element={<CESConnect />} />
+        <Route
+          path="/ces-connect"
+          element={
+            <ProtectedRoute>
+              <CESConnect />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <CESConnectFloat />
       <FloatingWhatsApp />

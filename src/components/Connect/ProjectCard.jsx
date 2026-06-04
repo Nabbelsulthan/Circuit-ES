@@ -8,11 +8,11 @@ export default function ProjectCard() {
 
         <div>
           <div className="project-title">
-            MCC Panel Project
+            Bio-Gas
           </div>
 
           <div className="project-company">
-            TVS Motor Company
+            Bitsol Automation
           </div>
         </div>
 
