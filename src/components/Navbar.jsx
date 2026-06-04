@@ -26,7 +26,7 @@ import SolarPowerIcon from "@mui/icons-material/SolarPower";
 import BusinessIcon from "@mui/icons-material/Business";
 import ContactMailIcon from "@mui/icons-material/ContactMail";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import HubIcon from "@mui/icons-material/Hub";
+// import HubIcon from "@mui/icons-material/Hub";
 
 const pages = [
   { label: "HOME", path: "/" },
@@ -35,7 +35,7 @@ const pages = [
   { label: "SERVICES", path: "/services" },
   { label: "SOLAR SERVICES", path: "/solarservice" },
   { label: "INFRASTRUCTURE", path: "/infrastructure" },
-  { label: "CES CONNECT", path: "/ces-connect" },
+  // { label: "CES CONNECT", path: "/ces-connect" },
   { label: "CONTACT US", path: "/contact" },
 ];
 
@@ -46,7 +46,7 @@ const iconMap = {
   "/services": <BuildIcon />,
   "/solarservice": <SolarPowerIcon />,
   "/infrastructure": <BusinessIcon />,
-  "/ces-connect": <HubIcon />,
+  // "/ces-connect": <HubIcon />,
   "/contact": <ContactMailIcon />,
 };
 
@@ -145,8 +145,8 @@ function ResponsiveAppBar() {
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
-              // gap: isLanding ? 5 : 4,
-                 gap: isLanding ? 3 : 3,
+              gap: isLanding ? 5 : 4,
+                //  gap: isLanding ? 3 : 3,
               alignItems: "center",
               justifyContent: "center",
               whiteSpace: "nowrap",
