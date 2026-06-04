@@ -21,6 +21,8 @@ import Infrastructure from './components/Infrastructure';
 
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 
+import CESConnect from './components/CESConnect';
+
 
 function AppContent() {
   const location = useLocation();
@@ -48,6 +50,7 @@ function AppContent() {
         <Route path="/products" element={<ProductsSol />} />
         <Route path="/solarservice" element={<SolarServices />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
+        <Route path="/ces-connect" element={<CESConnect />} />
       </Routes>
       <FloatingWhatsApp />
       <Footer />
