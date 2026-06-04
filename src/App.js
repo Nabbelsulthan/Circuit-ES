@@ -25,6 +25,8 @@ import CESConnect from './components/CESConnect';
 
 import CESConnectFloat from './components/CESConnectFloat';
 
+import CustomerPortal from "./components/portal/CustomerPortal";
+
 
 function AppContent() {
   const location = useLocation();
@@ -52,6 +54,7 @@ function AppContent() {
         <Route path="/products" element={<ProductsSol />} />
         <Route path="/solarservice" element={<SolarServices />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
+        <Route path="/portal" element={<CustomerPortal />} />
         <Route path="/ces-connect" element={<CESConnect />} />
       </Routes>
       <CESConnectFloat />
