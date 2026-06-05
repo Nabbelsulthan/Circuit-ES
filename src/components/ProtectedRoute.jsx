@@ -12,12 +12,33 @@
 
 
 
+// import { Navigate } from "react-router-dom";
+
+// export default function ProtectedRoute({ children }) {
+//   const customer = localStorage.getItem("customer");
+
+//   return customer
+//     ? children
+//     : <Navigate to="/portal" replace />;
+// }
+
+
 import { Navigate } from "react-router-dom";
 
-export default function ProtectedRoute({ children }) {
-  const customer = localStorage.getItem("customer");
+export default function ProtectedRoute({
+  children,
+}) {
+  const isLoggedIn =
+    localStorage.getItem("isLoggedIn");
 
-  return customer
-    ? children
-    : <Navigate to="/portal" replace />;
+  if (!isLoggedIn) {
+    return (
+      <Navigate
+        to="/portal"
+        replace
+      />
+    );
+  }
+
+  return children;
 }

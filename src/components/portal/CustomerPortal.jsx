@@ -3,7 +3,7 @@
 
 import "./CustomerPortal.css";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import Logo from "../../assets/circuitES1-logo.png";
 // import logo from "../../assets/CircuitsES connect logo.png";
 import VisibilityIcon from "@mui/icons-material/Visibility";
@@ -23,9 +23,16 @@ export default function CustomerPortal() {
 
 
   const [error, setError] = useState("");
+  useEffect(() => {
+    const isLoggedIn =
+      localStorage.getItem("isLoggedIn");
+
+    if (isLoggedIn) {
+      navigate("/ces-connect");
+    }
+  }, [navigate]);
 
 
-  
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -40,6 +47,7 @@ export default function CustomerPortal() {
       password === "bitsol123"
     ) {
       localStorage.setItem("customer", "Bitsol");
+      localStorage.setItem("isLoggedIn", "true");
 
       navigate("/ces-connect");
     } else {
