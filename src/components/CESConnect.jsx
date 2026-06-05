@@ -6,6 +6,7 @@ import StatsCards from "./Connect/StatsCards";
 import ProjectCard from "./Connect/ProjectCard";
 import RecentUpdates from "./Connect/RecentUpdates";
 import CustomerBanner from "./Connect/CustomerBanner";
+import ProjectDetails from "./Connect/ProjectDetails";
 
 export default function CESConnect() {
 
@@ -46,6 +47,9 @@ export default function CESConnect() {
         <CustomerBanner />
 
         {/* <HeroSection /> */}
+
+
+<ProjectDetails />
 
         <StatsCards />
 
