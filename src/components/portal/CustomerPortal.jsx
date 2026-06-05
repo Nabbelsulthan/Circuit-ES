@@ -12,7 +12,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 
 
-
 export default function CustomerPortal() {
   const navigate = useNavigate();
 
@@ -134,22 +133,6 @@ export default function CustomerPortal() {
                 }
               />
             </div>
-
-            {/* <div className="form-group">
-              <label>Password</label>
-              <input
-                type="password"
-                placeholder="Enter your password"
-                value={password}
-                onChange={(e) =>
-                  setPassword(e.target.value)
-                }
-              />
-            </div> */}
-
-
-
-
 
             <div className="form-group">
               <label>Password</label>

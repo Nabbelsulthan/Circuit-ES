@@ -99,3 +99,26 @@
     gap: 20px;
   }
 }
+
+.projects-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.dropdown-icon {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  transition: 0.3s;
+}

@@ -34,13 +34,13 @@ export default function CustomerBanner() {
         </div>
 
         <div className="banner-stat">
-          <h2>14</h2>
-          <span>Documents</span>
+          <h2>2</h2>
+          <span>Completed</span>
         </div>
 
         <div className="banner-stat">
-          <h2>2</h2>
-          <span>Dispatches</span>
+          <h2>1</h2>
+          <span>On Going</span>
         </div>
 
       </div>
