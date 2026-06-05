@@ -4,7 +4,7 @@
 import "./CustomerPortal.css";
 import { useNavigate } from "react-router-dom";
 import { useState ,useEffect} from "react";
-import Logo from "../../assets/circuitES1-logo.png";
+// import Logo from "../../assets/circuitES1-logo.png";
 // import logo from "../../assets/CircuitsES connect logo.png";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -62,11 +62,11 @@ export default function CustomerPortal() {
 
         <div className="portal-info">
 
-          <img
+          {/* <img
             src={Logo}
             alt="Circuits Energy System"
             className="portal-logo"
-          />
+          /> */}
 
           <h1>CES Connect</h1>
 

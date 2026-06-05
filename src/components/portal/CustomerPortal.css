@@ -1,15 +1,11 @@
-
-
 .portal-page {
   min-height: 100vh;
 
   background:
-  linear-gradient(
-    135deg,
-    #0d1117,
-    #1f2937,
-    #55b532
-  );
+    linear-gradient(135deg,
+      #0d1117,
+      #1f2937,
+      #55b532);
 
   display: flex;
   justify-content: center;
@@ -29,10 +25,8 @@
   top: -200px;
 
   background:
-  radial-gradient(
-    rgba(85,181,50,.25),
-    transparent
-  );
+    radial-gradient(rgba(85, 181, 50, .25),
+      transparent);
 
   border-radius: 50%;
 }
@@ -63,8 +57,17 @@
 }
 
 .portal-info h1 {
+
   font-size: 4rem;
   margin: 0;
+
+  background: linear-gradient(135deg,
+      #1b5e20,
+      #4caf50,
+      #ffffff);
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .portal-info h2 {
@@ -82,15 +85,15 @@
   margin-top: 30px;
 
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
 
   gap: 15px;
 }
 
 .portal-features div {
-  background: rgba(255,255,255,.08);
+  background: rgba(255, 255, 255, .08);
 
-  border: 1px solid rgba(255,255,255,.1);
+  border: 1px solid rgba(255, 255, 255, .1);
 
   border-radius: 12px;
 
@@ -105,7 +108,7 @@
   padding: 40px;
 
   box-shadow:
-  0 25px 60px rgba(0,0,0,.25);
+    0 25px 60px rgba(0, 0, 0, .25);
 }
 
 .portal-card h3 {
@@ -175,7 +178,7 @@
   text-decoration: none;
 }
 
-@media(max-width: 900px){
+@media(max-width: 900px) {
 
   .portal-container {
     grid-template-columns: 1fr;
