@@ -242,8 +242,42 @@
   color: #55b532;
 }
 
+/* .login-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+} */
+
+
 .login-title {
   display: flex;
   align-items: center;
   gap: 10px;
+
+  font-size: 2rem;
+  margin-bottom: 8px;
+
+  color: #111827;
+}
+
+.login-title .MuiSvgIcon-root {
+  color: #55b532;
+}
+
+
+.secure-badge {
+  display: inline-block;
+
+  background: #eef8e8;
+  color: #55b532;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+
+  margin-bottom: 15px;
 }

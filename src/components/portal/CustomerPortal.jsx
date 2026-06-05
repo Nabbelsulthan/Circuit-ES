@@ -5,10 +5,13 @@ import "./CustomerPortal.css";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Logo from "../../assets/circuitES1-logo.png";
-
+// import logo from "../../assets/CircuitsES connect logo.png";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
+
+
 
 export default function CustomerPortal() {
   const navigate = useNavigate();
@@ -21,6 +24,8 @@ export default function CustomerPortal() {
 
   const [error, setError] = useState("");
 
+
+  
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -83,7 +88,9 @@ export default function CustomerPortal() {
             Sign in to access your projects.
           </p> */}
 
-
+          <div className="secure-badge">
+            SECURE ACCESS
+          </div>
 
           <h3 className="login-title">
             <LockOutlinedIcon />

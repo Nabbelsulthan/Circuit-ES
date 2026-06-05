@@ -1,0 +1,53 @@
+.projects-page {
+  min-height: 100vh;
+  background: #f6f8fb;
+  padding: 40px;
+}
+
+.projects-page h1 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  color: #111827;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  gap: 24px;
+}
+
+.project-tile {
+  background: white;
+
+  border-radius: 20px;
+
+  padding: 30px;
+
+  cursor: pointer;
+
+  border: 1px solid #e5e7eb;
+
+  transition: all .3s ease;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.05);
+}
+
+.project-tile:hover {
+  transform: translateY(-5px);
+
+  border-color: #55b532;
+
+  box-shadow:
+    0 20px 40px rgba(85,181,50,.15);
+}
+
+.project-tile h3 {
+  margin: 0;
+  color: #111827;
+}
+
+.project-tile p {
+  margin-top: 10px;
+  color: #6b7280;
+}

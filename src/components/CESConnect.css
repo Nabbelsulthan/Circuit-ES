@@ -67,9 +67,34 @@
 
 .stat-value {
   margin-top: 8px;
-  font-size: 42px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 600;
   color: #55b532;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.stat-icon {
+  width: 55px;
+  height: 55px;
+
+  border-radius: 16px;
+
+  background: rgba(85,181,50,.12);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #55b532;
+}
+
+.stat-content {
+  flex: 1;
 }
 
 /* MAIN GRID */

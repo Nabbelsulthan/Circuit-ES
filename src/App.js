@@ -29,6 +29,10 @@ import CustomerPortal from "./components/portal/CustomerPortal";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 
+import Projects from "./components/Projects";
+
+import ProjectDocuments from "./components/ProjectDocuments"; 
+
 
 function AppContent() {
   const location = useLocation();
@@ -65,7 +69,20 @@ function AppContent() {
             </ProtectedRoute>
           }
         />
+
+
+           <Route
+        path="/projects"
+        element={<Projects />}
+      />
+
+      <Route
+        path="/project/:id"
+        element={<ProjectDocuments />}
+      />
       </Routes>
+
+   
       <CESConnectFloat />
       <FloatingWhatsApp />
       <Footer />
