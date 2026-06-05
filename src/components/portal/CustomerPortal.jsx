@@ -6,12 +6,18 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Logo from "../../assets/circuitES1-logo.png";
 
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+
 export default function CustomerPortal() {
   const navigate = useNavigate();
 
   const [companyId, setCompanyId] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
 
   const [error, setError] = useState("");
 
@@ -71,7 +77,18 @@ export default function CustomerPortal() {
 
         <div className="portal-card">
 
-          <h3>Customer Login</h3>
+          {/* <h3>Customer Login</h3>
+
+          <p>
+            Sign in to access your projects.
+          </p> */}
+
+
+
+          <h3 className="login-title">
+            <LockOutlinedIcon />
+            Customer Login
+          </h3>
 
           <p>
             Sign in to access your projects.
@@ -103,7 +120,7 @@ export default function CustomerPortal() {
               />
             </div>
 
-            <div className="form-group">
+            {/* <div className="form-group">
               <label>Password</label>
               <input
                 type="password"
@@ -113,6 +130,48 @@ export default function CustomerPortal() {
                   setPassword(e.target.value)
                 }
               />
+            </div> */}
+
+
+
+
+
+            <div className="form-group">
+              <label>Password</label>
+
+              <div className="password-wrapper">
+
+                <input
+                  type={
+                    showPassword
+                      ? "text"
+                      : "password"
+                  }
+                  placeholder="Enter your password"
+                  value={password}
+                  onChange={(e) =>
+                    setPassword(e.target.value)
+                  }
+                />
+
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() =>
+                    setShowPassword(
+                      !showPassword
+                    )
+                  }
+                >
+                  {showPassword ? (
+                    <VisibilityOffIcon />
+                  ) : (
+                    <VisibilityIcon />
+                  )}
+                </button>
+
+              </div>
+
             </div>
 
             {error && (
