@@ -147,6 +147,7 @@
 .portal-logo {
   width: 220px;
   margin-bottom: 30px;
+  height: auto;
 }
 
 .portal-info h1 {

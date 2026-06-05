@@ -52,7 +52,7 @@ export default function CustomerPortal() {
 
           <h1>CES Connect</h1>
 
-          <h2>Bitsol Customer Portal</h2>
+          <h2>Customer Portal</h2>
 
           <p>
             Welcome to the secure customer portal for
@@ -74,7 +74,7 @@ export default function CustomerPortal() {
           <h3>Customer Login</h3>
 
           <p>
-            Sign in to access your Bitsol projects.
+            Sign in to access your projects.
           </p>
 
           <form onSubmit={handleLogin}>

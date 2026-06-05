@@ -1,10 +1,11 @@
 
 import "./CESConnect.css";
 
-import HeroSection from "./Connect/HeroSection";
+// import HeroSection from "./Connect/HeroSection";
 import StatsCards from "./Connect/StatsCards";
 import ProjectCard from "./Connect/ProjectCard";
 import RecentUpdates from "./Connect/RecentUpdates";
+import CustomerBanner from "./Connect/CustomerBanner";
 
 export default function CESConnect() {
 
@@ -42,7 +43,9 @@ export default function CESConnect() {
 
         </div>
 
-        <HeroSection />
+        <CustomerBanner />
+
+        {/* <HeroSection /> */}
 
         <StatsCards />
 
