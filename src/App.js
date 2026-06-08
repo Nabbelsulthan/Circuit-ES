@@ -31,7 +31,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 
 import Projects from "./components/Projects";
 
-import ProjectDocuments from "./components/ProjectDocuments"; 
+import ProjectDocuments from "./components/ProjectDocuments";
+
+import DispatchStatus from "./components/DispatchStatus";
 
 
 function AppContent() {
@@ -71,18 +73,23 @@ function AppContent() {
         />
 
 
-           <Route
-        path="/projects"
-        element={<Projects />}
-      />
+        <Route
+          path="/projects"
+          element={<Projects />}
+        />
 
-      <Route
-        path="/project/:id"
-        element={<ProjectDocuments />}
-      />
+        <Route
+          path="/project/:id"
+          element={<ProjectDocuments />}
+        />
+
+        <Route
+          path="/dispatch-status"
+          element={<DispatchStatus />}
+        />
       </Routes>
 
-   
+
       <CESConnectFloat />
       <FloatingWhatsApp />
       <Footer />
