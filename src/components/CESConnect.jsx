@@ -1,5 +1,89 @@
 
 
+// import "./CESConnect.css";
+
+// import StatsCards from "./Connect/StatsCards";
+// import ProjectCard from "./Connect/ProjectCard";
+// import RecentUpdates from "./Connect/RecentUpdates";
+// import CustomerBanner from "./Connect/CustomerBanner";
+// import ProjectDetails from "./Connect/ProjectDetails";
+
+// import { useNavigate } from "react-router-dom";
+// import { useEffect, useState } from "react";
+
+// export default function CESConnect() {
+//   const navigate = useNavigate();
+//   const [projects, setProjects] =
+//     useState([]);
+
+//   useEffect(() => {
+//     const customerId = localStorage.getItem("customerId");
+
+//     if (!customerId) {
+//       navigate("/portal", { replace: true });
+//     }
+//   }, [navigate]);
+
+
+
+//   const customer =
+//     localStorage.getItem("customerName") ||
+//     "Customer";
+
+//   const handleLogout = () => {
+//     localStorage.removeItem("customerId");
+//     localStorage.removeItem("customerName");
+//     localStorage.removeItem("isLoggedIn");
+//     navigate("/portal", { replace: true });
+//   };
+
+//   return (
+//     <div className="ces-connect">
+
+//       <div className="ces-container">
+
+//         <div className="dashboard-header">
+
+//           <div>
+//             <h2 className="welcome-title">
+//               Welcome Back, {customer}
+//             </h2>
+
+//             <p className="welcome-subtitle">
+//               Monitor your projects and documents.
+//             </p>
+//           </div>
+
+//           <button
+//             className="logout-btn"
+//             onClick={handleLogout}
+//           >
+//             Logout
+//           </button>
+
+//         </div>
+
+//         <CustomerBanner />
+
+//         <ProjectDetails />
+
+//         <StatsCards />
+
+//         <div className="dashboard-grid">
+
+//           <ProjectCard />
+
+//           <RecentUpdates />
+
+//         </div>
+
+//       </div>
+
+//     </div>
+//   );
+// }
+
+
 import "./CESConnect.css";
 
 import StatsCards from "./Connect/StatsCards";
@@ -7,31 +91,107 @@ import ProjectCard from "./Connect/ProjectCard";
 import RecentUpdates from "./Connect/RecentUpdates";
 import CustomerBanner from "./Connect/CustomerBanner";
 import ProjectDetails from "./Connect/ProjectDetails";
+import CompletedProjectCard
+  from "./Connect/CompletedProjectCard";
 
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function CESConnect() {
+
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const customer = localStorage.getItem("customer");
+  const [projects, setProjects] =
+    useState([]);
 
-    if (!customer) {
-      navigate("/portal", { replace: true });
+  useEffect(() => {
+
+    const customerId =
+      localStorage.getItem(
+        "customerId"
+      );
+
+    if (!customerId) {
+
+      navigate(
+        "/portal",
+        {
+          replace: true,
+        }
+      );
+
+      return;
+
     }
+
+    fetch(
+      `http://localhost:5001/api/customers/${customerId}/projects`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+
+        console.log(
+          "Projects:",
+          data
+        );
+
+        setProjects(data);
+
+      })
+      .catch((error) => {
+
+        console.error(error);
+
+      });
+
   }, [navigate]);
 
   const customer =
-    localStorage.getItem("customer") || "Customer";
+    localStorage.getItem(
+      "customerName"
+    ) || "Customer";
+
+  const activeProjects =
+    projects.filter(
+      (project) =>
+        project.status !==
+        "Delivered"
+    );
+
+  const completedProjects =
+    projects.filter(
+      (project) =>
+        project.status ===
+        "Delivered"
+    );
 
   const handleLogout = () => {
-    localStorage.removeItem("customer");
-    localStorage.removeItem("isLoggedIn");
-    navigate("/portal", { replace: true });
+
+    localStorage.removeItem(
+      "customerId"
+    );
+
+    localStorage.removeItem(
+      "customerName"
+    );
+
+    localStorage.removeItem(
+      "isLoggedIn"
+    );
+
+    navigate(
+      "/portal",
+      {
+        replace: true,
+      }
+    );
+
   };
 
+
+
   return (
+
     <div className="ces-connect">
 
       <div className="ces-container">
@@ -39,6 +199,7 @@ export default function CESConnect() {
         <div className="dashboard-header">
 
           <div>
+
             <h2 className="welcome-title">
               Welcome Back, {customer}
             </h2>
@@ -46,6 +207,7 @@ export default function CESConnect() {
             <p className="welcome-subtitle">
               Monitor your projects and documents.
             </p>
+
           </div>
 
           <button
@@ -65,7 +227,54 @@ export default function CESConnect() {
 
         <div className="dashboard-grid">
 
-          <ProjectCard />
+          <div className="completed-projects-section">
+
+            <h2 className="projects-section-title" >
+              Active Projects
+            </h2>
+
+            {activeProjects.map(
+              (project) => (
+
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                />
+
+              )
+            )}
+
+            {completedProjects.length > 0 && (
+
+              <>
+
+              <br />
+
+                <h2
+                  className="projects-section-title"
+                >
+                  Completed Projects
+                  (
+                  {completedProjects.length}
+                  )
+                </h2>
+
+                {completedProjects.map(
+                  (project) => (
+
+                    <CompletedProjectCard
+                      key={project.id}
+                      project={project}
+                    />
+
+                  )
+                )}
+
+              </>
+
+            )}
+
+          </div>
 
           <RecentUpdates />
 
@@ -74,5 +283,18 @@ export default function CESConnect() {
       </div>
 
     </div>
+
   );
+
 }
+
+
+
+
+
+
+
+
+
+
+

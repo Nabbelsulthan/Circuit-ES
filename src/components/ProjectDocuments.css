@@ -96,3 +96,29 @@
   padding: 15px;
   font-weight: 600;
 }
+
+.gallery-image {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.gallery-image:hover {
+  transform: scale(1.02);
+}
+
+.image-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+.image-preview {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+}

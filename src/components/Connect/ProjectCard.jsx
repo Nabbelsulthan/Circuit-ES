@@ -1,29 +1,87 @@
+
+
 import ProgressTimeline from "./ProgressTimeline";
 
-export default function ProjectCard() {
+
+const stageMap = {
+  Design: 0,
+  Fabrication: 1,
+  Assembly: 2,
+  Wiring: 3,
+  Testing: 4,
+  Dispatch: 5,
+  Delivered: 6,
+};
+
+export default function ProjectCard({
+  project,
+}) {
+
+  const currentStage =
+    stageMap[
+    project.status
+    ] ?? 0;
+
   return (
+
     <div className="project-card">
 
       <div className="project-header">
 
         <div>
+
           <div className="project-title">
-            Bio-Gas
+            {project.project_name}
           </div>
 
           <div className="project-company">
-            Bitsol Automation
+            {
+              localStorage.getItem(
+                "customerName"
+              )
+            }
           </div>
+
         </div>
 
         <div className="progress-pill">
-          82%
+          {project.status}
         </div>
 
       </div>
 
-      <ProgressTimeline currentStage={4} />
+      <div
+        style={{
+          marginTop: "12px",
+          marginBottom: "16px",
+          fontSize: "14px",
+          color: "#666",
+        }}
+      >
+        <div className="project-meta">
+
+          <div className="meta-item">
+            <span>PO Number</span>
+            <strong>{project.po_number}</strong>
+          </div>
+
+          <div className="meta-item">
+            <span>Project Value</span>
+            <strong>
+              ₹{project.project_value}
+            </strong>
+          </div>
+
+
+        </div>
+      </div>
+
+      <ProgressTimeline
+        currentStage={currentStage}
+      />
 
     </div>
+
   );
+
 }

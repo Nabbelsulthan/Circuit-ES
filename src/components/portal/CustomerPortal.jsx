@@ -4,8 +4,6 @@
 import "./CustomerPortal.css";
 import { useNavigate } from "react-router-dom";
 import { useState ,useEffect} from "react";
-// import Logo from "../../assets/circuitES1-logo.png";
-// import logo from "../../assets/CircuitsES connect logo.png";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -14,8 +12,6 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 
 export default function CustomerPortal() {
   const navigate = useNavigate();
-
-  const [companyId, setCompanyId] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -32,26 +28,113 @@ export default function CustomerPortal() {
   }, [navigate]);
 
 
-  const handleLogin = (e) => {
+  // const handleLogin = (e) => {
+  //   e.preventDefault();
+
+  //   if (!companyId || !username || !password) {
+  //     setError("Please fill all fields.");
+  //     return;
+  //   }
+
+  //   if (
+  //     companyId === "BITSOL001" &&
+  //     username === "bitsol" &&
+  //     password === "bitsol123"
+  //   ) {
+  //     localStorage.setItem("customer", "Bitsol");
+  //     localStorage.setItem("isLoggedIn", "true");
+
+  //     navigate("/ces-connect");
+  //   } else {
+  //     setError("Invalid credentials.");
+  //   }
+  // };
+
+
+
+
+  const handleLogin =
+  async (e) => {
+
     e.preventDefault();
 
-    if (!companyId || !username || !password) {
-      setError("Please fill all fields.");
+    if (
+      !username ||
+      !password
+    ) {
+
+      setError(
+        "Please fill all fields."
+      );
+
       return;
     }
 
-    if (
-      companyId === "BITSOL001" &&
-      username === "bitsol" &&
-      password === "bitsol123"
-    ) {
-      localStorage.setItem("customer", "Bitsol");
-      localStorage.setItem("isLoggedIn", "true");
+    try {
 
-      navigate("/ces-connect");
-    } else {
-      setError("Invalid credentials.");
+      const response =
+        await fetch(
+          "http://localhost:5001/api/customer-auth/login",
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json",
+            },
+
+            body:
+              JSON.stringify({
+                username,
+                password,
+              }),
+          }
+        );
+
+      const data =
+        await response.json();
+
+      if (
+        response.ok
+      ) {
+
+        localStorage.setItem(
+          "customerId",
+          data.customerId
+        );
+
+        localStorage.setItem(
+          "customerName",
+          data.companyName
+        );
+
+        localStorage.setItem(
+          "isLoggedIn",
+          "true"
+        );
+
+        navigate(
+          "/ces-connect"
+        );
+
+      } else {
+
+        setError(
+          data.message
+        );
+
+      }
+
+    } catch (error) {
+
+      console.error(error);
+
+      setError(
+        "Server Error"
+      );
+
     }
+
   };
 
   return (
@@ -62,11 +145,7 @@ export default function CustomerPortal() {
 
         <div className="portal-info">
 
-          {/* <img
-            src={Logo}
-            alt="Circuits Energy System"
-            className="portal-logo"
-          /> */}
+
 
           <h1>CES Connect</h1>
 
@@ -89,11 +168,7 @@ export default function CustomerPortal() {
 
         <div className="portal-card">
 
-          {/* <h3>Customer Login</h3>
 
-          <p>
-            Sign in to access your projects.
-          </p> */}
 
           <div className="secure-badge">
             SECURE ACCESS
@@ -110,17 +185,7 @@ export default function CustomerPortal() {
 
           <form onSubmit={handleLogin}>
 
-            <div className="form-group">
-              <label>Company ID</label>
-              <input
-                type="text"
-                placeholder="Enter your company ID"
-                value={companyId}
-                onChange={(e) =>
-                  setCompanyId(e.target.value)
-                }
-              />
-            </div>
+
 
             <div className="form-group">
               <label>Username</label>

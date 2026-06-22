@@ -3,87 +3,121 @@
 
 import "./ProjectDocuments.css";
 import { useParams } from "react-router-dom";
-
-const projects = [
-  {
-    id: 1,
-    name: "MCC Control Panel",
-    documents: [
-      "GA Drawing.pdf",
-      "SLD Diagram.pdf",
-      "FAT Report.pdf",
-    ],
-    photos: [
-      {
-        image: "https://picsum.photos/500/300?1",
-        caption: "Assembly Completed",
-      },
-      {
-        image: "https://picsum.photos/500/300?2",
-        caption: "Wiring Stage",
-      },
-      {
-        image: "https://picsum.photos/500/300?3",
-        caption: "Testing Phase",
-      },
-    ],
-  },
-
-  {
-    id: 2,
-    name: "PCC Panel",
-    documents: [
-      "PCC Drawing.pdf",
-      "Test Report.pdf",
-    ],
-    photos: [
-      {
-        image: "https://picsum.photos/500/300?4",
-        caption: "Fabrication",
-      },
-      {
-        image: "https://picsum.photos/500/300?5",
-        caption: "Assembly",
-      },
-    ],
-  },
-
-  {
-    id: 3,
-    name: "APFC Panel",
-    documents: [
-      "APFC Layout.pdf",
-      "Inspection Report.pdf",
-    ],
-    photos: [
-      {
-        image: "https://picsum.photos/500/300?6",
-        caption: "Testing",
-      },
-    ],
-  },
-];
+import { useEffect, useState } from "react";
 
 export default function ProjectDocuments() {
+
   const { id } = useParams();
 
-  const project = projects.find(
-    (p) => p.id === Number(id)
-  );
+  console.log("Project ID:", id);
+
+  const [documents, setDocuments] =
+    useState([]);
+
+  const [fatReports, setFatReports] =
+    useState([]);
+
+  const [project, setProject] =
+    useState(null);
+
+
+
+  const [gallery, setGallery] =
+    useState([]);
+
+
+  const [selectedImage,
+    setSelectedImage] =
+    useState(null);
+
+
+
+  useEffect(() => {
+
+    fetch(
+      `http://localhost:5001/api/projects/${id}`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(
+          "PROJECT:",
+          data
+        );
+
+        if (data) {
+          setProject(
+            JSON.parse(data)
+          );
+        }
+      });
+
+    fetch(
+      `http://localhost:5001/api/documents/${id}`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(
+          "DOCUMENTS:",
+          data
+        );
+
+        if (data) {
+          setDocuments(
+            JSON.parse(data)
+          );
+        }
+      });
+
+    fetch(
+      `http://localhost:5001/api/fat-reports/${id}`
+    )
+      .then((res) => res.text())
+      .then((data) => {
+        console.log(
+          "FAT REPORTS:",
+          data
+        );
+
+        if (data) {
+          setFatReports(
+            JSON.parse(data)
+          );
+        }
+      });
+
+
+    fetch(
+      `http://localhost:5001/api/gallery/${id}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setGallery(data);
+      });
+
+  }, [id]);
 
   if (!project) {
+
     return (
       <div className="project-doc-page">
-        <h1>Project Not Found</h1>
+        <h1>Loading...</h1>
       </div>
     );
+
   }
 
+
+
+
+
   return (
+
     <div className="project-doc-page">
 
       <div className="project-header">
-        <h1>{project.name}</h1>
+        <h1>
+          {project.project_name}
+        </h1>
       </div>
 
       <h2 className="section-title">
@@ -92,20 +126,81 @@ export default function ProjectDocuments() {
 
       <div className="document-grid">
 
-        {project.documents.map((doc) => (
-          <div
-            key={doc}
-            className="document-card"
-          >
-            <span className="document-name">
-              {doc}
-            </span>
+        {documents.length === 0 ? (
 
-            <button className="download-btn">
-              Download
-            </button>
-          </div>
-        ))}
+          <p>
+            No Documents Available
+          </p>
+
+        ) : (
+
+          documents.map((doc) => (
+
+            <div
+              key={doc.id}
+              className="document-card"
+            >
+
+              <span className="document-name">
+                {doc.file_name}
+              </span>
+
+              <a
+                href={`http://localhost:5001/${doc.file_path}`}
+                target="_blank"
+                rel="noreferrer"
+                className="download-btn"
+              >
+                Download
+              </a>
+
+            </div>
+
+          ))
+
+        )}
+
+      </div>
+
+      <h2 className="section-title">
+        FAT Reports
+      </h2>
+
+      <div className="document-grid">
+
+        {fatReports.length === 0 ? (
+
+          <p>
+            No FAT Reports Available
+          </p>
+
+        ) : (
+
+          fatReports.map((report) => (
+
+            <div
+              key={report.id}
+              className="document-card"
+            >
+
+              <span className="document-name">
+                {report.report_name}
+              </span>
+
+              <a
+                href={`http://localhost:5001/${report.file_path}`}
+                target="_blank"
+                rel="noreferrer"
+                className="download-btn"
+              >
+                Download
+              </a>
+
+            </div>
+
+          ))
+
+        )}
 
       </div>
 
@@ -115,24 +210,63 @@ export default function ProjectDocuments() {
 
       <div className="gallery-grid">
 
-        {project.photos.map((photo, index) => (
-          <div
-            key={index}
-            className="gallery-item"
-          >
-            <img
-              src={photo.image}
-              alt={photo.caption}
-            />
+        {gallery.map(
+          (image) => (
 
-            <div className="gallery-caption">
-              {photo.caption}
+            <div
+              key={image.id}
+              className="gallery-item"
+            >
+
+              <img
+                src={
+                  `http://localhost:5001/${image.image_path}`
+                }
+                alt={
+                  image.caption
+                }
+                className="gallery-image"
+                onClick={() =>
+                  setSelectedImage(
+                    `http://localhost:5001/${image.image_path}`
+                  )
+                }
+              />
+
+              <div className="gallery-caption">
+                {image.caption}
+              </div>
+
             </div>
-          </div>
-        ))}
+
+          )
+        )}
 
       </div>
 
+
+      {selectedImage && (
+
+        <div
+          className="image-modal"
+          onClick={() =>
+            setSelectedImage(null)
+          }
+        >
+
+          <img
+            src={selectedImage}
+            alt="Preview"
+            className="image-preview"
+          />
+
+        </div>
+
+      )}
+
+
     </div>
+
   );
+
 }

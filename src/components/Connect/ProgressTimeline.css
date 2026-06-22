@@ -71,6 +71,13 @@
   background: #55b532;
 }
 
+
+.progress-circle.completed {
+  background: #78b82a;
+  color: white;
+  border-color: #78b82a;
+}
+
 @media(max-width: 768px) {
 
   .progress-wrapper {
