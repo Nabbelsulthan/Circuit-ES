@@ -1,39 +1,4 @@
-// import { Link, useLocation } from "react-router-dom";
-// import "./CESConnectFloat.css";
 
-// export default function CESConnectFloat() {
-//   const location = useLocation();
-
-//   const hiddenRoutes = [
-//     "/portal",
-//     "/ces-connect"
-//   ];
-
-//   if (hiddenRoutes.includes(location.pathname)) {
-//     return null;
-//   }
-
-//   return (
-//     <Link
-//       to="/portal"
-//       className="ces-connect-float"
-//     >
-//       <div className="portal-icon">
-//         ⚡
-//       </div>
-
-//       <div className="ces-connect-text">
-//         <span className="portal-label">
-//           CUSTOMER PORTAL
-//         </span>
-
-//         <span className="portal-name">
-//           CES Connect
-//         </span>
-//       </div>
-//     </Link>
-//   );
-// }
 
 
 import { Link, useLocation } from "react-router-dom";
@@ -42,11 +7,18 @@ import "./CESConnectFloat.css";
 export default function CESConnectFloat() {
   const location = useLocation();
 
+  const portalPages = [
+    "/portal",
+    "/ces-connect",
+    "/projects",
+    "/project",
+    "/dispatch-status",
+  ];
+
   const isPortal =
-    location.pathname.startsWith("/portal") ||
-    location.pathname.startsWith("/ces-connect") ||
-    location.pathname.startsWith("/projects") ||
-    location.pathname.startsWith("/project");
+    portalPages.some((page) =>
+      location.pathname.startsWith(page)
+    );
 
   if (isPortal) {
     return null;

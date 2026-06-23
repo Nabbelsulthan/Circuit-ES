@@ -17,9 +17,22 @@ body {
 .app-layout {
   position: relative;
   min-height: 100vh;
+/*  */
+    display: flex;
+  flex-direction: column;
+  /*  */
   z-index: 1;
   animation: pageFade 0.6s ease;
 }
+
+/*  */
+.page-content {
+  flex: 1;
+}
+/*  
+
+ */
+
 
 /* ================= BASE PREMIUM BACKGROUND ================= */
 

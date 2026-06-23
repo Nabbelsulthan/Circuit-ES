@@ -1,89 +1,5 @@
 
 
-// import "./CESConnect.css";
-
-// import StatsCards from "./Connect/StatsCards";
-// import ProjectCard from "./Connect/ProjectCard";
-// import RecentUpdates from "./Connect/RecentUpdates";
-// import CustomerBanner from "./Connect/CustomerBanner";
-// import ProjectDetails from "./Connect/ProjectDetails";
-
-// import { useNavigate } from "react-router-dom";
-// import { useEffect, useState } from "react";
-
-// export default function CESConnect() {
-//   const navigate = useNavigate();
-//   const [projects, setProjects] =
-//     useState([]);
-
-//   useEffect(() => {
-//     const customerId = localStorage.getItem("customerId");
-
-//     if (!customerId) {
-//       navigate("/portal", { replace: true });
-//     }
-//   }, [navigate]);
-
-
-
-//   const customer =
-//     localStorage.getItem("customerName") ||
-//     "Customer";
-
-//   const handleLogout = () => {
-//     localStorage.removeItem("customerId");
-//     localStorage.removeItem("customerName");
-//     localStorage.removeItem("isLoggedIn");
-//     navigate("/portal", { replace: true });
-//   };
-
-//   return (
-//     <div className="ces-connect">
-
-//       <div className="ces-container">
-
-//         <div className="dashboard-header">
-
-//           <div>
-//             <h2 className="welcome-title">
-//               Welcome Back, {customer}
-//             </h2>
-
-//             <p className="welcome-subtitle">
-//               Monitor your projects and documents.
-//             </p>
-//           </div>
-
-//           <button
-//             className="logout-btn"
-//             onClick={handleLogout}
-//           >
-//             Logout
-//           </button>
-
-//         </div>
-
-//         <CustomerBanner />
-
-//         <ProjectDetails />
-
-//         <StatsCards />
-
-//         <div className="dashboard-grid">
-
-//           <ProjectCard />
-
-//           <RecentUpdates />
-
-//         </div>
-
-//       </div>
-
-//     </div>
-//   );
-// }
-
-
 import "./CESConnect.css";
 
 import StatsCards from "./Connect/StatsCards";
@@ -201,12 +117,14 @@ export default function CESConnect() {
           <div>
 
             <h2 className="welcome-title">
-              Welcome Back, {customer}
+              Welcome, {customer}
             </h2>
 
             <p className="welcome-subtitle">
-              Monitor your projects and documents.
+              Your centralized hub for project tracking, documentation, dispatch updates and progress monitoring.
             </p>
+
+
 
           </div>
 
@@ -248,7 +166,7 @@ export default function CESConnect() {
 
               <>
 
-              <br />
+                <br />
 
                 <h2
                   className="projects-section-title"

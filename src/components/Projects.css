@@ -1,7 +1,8 @@
 .projects-page {
   min-height: 100vh;
-  background: #f6f8fb;
+
   padding: 40px;
+
 }
 
 .projects-page h1 {
@@ -12,7 +13,7 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 
@@ -30,7 +31,7 @@
   transition: all .3s ease;
 
   box-shadow:
-    0 10px 25px rgba(0,0,0,.05);
+    0 10px 25px rgba(0, 0, 0, .05);
 }
 
 .project-tile:hover {
@@ -39,7 +40,7 @@
   border-color: #55b532;
 
   box-shadow:
-    0 20px 40px rgba(85,181,50,.15);
+    0 20px 40px rgba(85, 181, 50, .15);
 }
 
 .project-tile h3 {

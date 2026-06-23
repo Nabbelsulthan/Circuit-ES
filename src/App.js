@@ -54,40 +54,45 @@ function AppContent() {
         }}
       />
 
-      <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<ServiceSol />} />
-        <Route path="/contact" element={<Enquiry />} />
-        <Route path="/products" element={<ProductsSol />} />
-        <Route path="/solarservice" element={<SolarServices />} />
-        <Route path="/infrastructure" element={<Infrastructure />} />
-        <Route path="/portal" element={<CustomerPortal />} />
-        <Route
-          path="/ces-connect"
-          element={
-            <ProtectedRoute>
-              <CESConnect />
-            </ProtectedRoute>
-          }
-        />
+
+      <div className="page-content">
+
+        <Routes>
+          <Route path="/" element={<Hero />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<ServiceSol />} />
+          <Route path="/contact" element={<Enquiry />} />
+          <Route path="/products" element={<ProductsSol />} />
+          <Route path="/solarservice" element={<SolarServices />} />
+          <Route path="/infrastructure" element={<Infrastructure />} />
+          <Route path="/portal" element={<CustomerPortal />} />
+          <Route
+            path="/ces-connect"
+            element={
+              <ProtectedRoute>
+                <CESConnect />
+              </ProtectedRoute>
+            }
+          />
 
 
-        <Route
-          path="/projects"
-          element={<Projects />}
-        />
+          <Route
+            path="/projects"
+            element={<Projects />}
+          />
 
-        <Route
-          path="/project/:id"
-          element={<ProjectDocuments />}
-        />
+          <Route
+            path="/project/:id"
+            element={<ProjectDocuments />}
+          />
 
-        <Route
-          path="/dispatch-status"
-          element={<DispatchStatus />}
-        />
-      </Routes>
+          <Route
+            path="/dispatch-status"
+            element={<DispatchStatus />}
+          />
+        </Routes>
+
+      </div>
 
 
       <CESConnectFloat />

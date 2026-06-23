@@ -5,7 +5,7 @@
   margin-bottom: 25px;
 
   box-shadow:
-    0 10px 25px rgba(0,0,0,.08);
+    0 10px 25px rgba(0, 0, 0, .08);
 }
 
 .project-header {
@@ -42,11 +42,9 @@
   border-radius: 50%;
 
   background:
-    linear-gradient(
-      135deg,
+    linear-gradient(135deg,
       #55b532,
-      #77d14f
-    );
+      #77d14f);
 
   color: white;
 
@@ -60,7 +58,7 @@
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 18px;
 }
 
@@ -87,6 +85,13 @@
 
 .status-live {
   color: #55b532;
+}
+
+.project-subtitle {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 @media(max-width: 768px) {
