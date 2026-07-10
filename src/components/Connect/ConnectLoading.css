@@ -1,0 +1,225 @@
+.connect-loading{
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+    linear-gradient(
+        135deg,
+        #f7f9fc,
+        #eef4fb
+    );
+
+    animation:fadeIn .4s ease;
+
+}
+
+.loading-logo{
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,.08);
+
+    margin-bottom:35px;
+
+    animation:
+    floatLogo 3s ease-in-out infinite;
+
+}
+
+.ces-loading-logo{
+
+    width:105px;
+
+    object-fit:contain;
+
+}
+
+.loading-title{
+
+    font-size:40px;
+
+    font-weight:700;
+
+    color:#143b63;
+
+    margin:0;
+
+}
+
+.loading-subtitle{
+
+    margin-top:8px;
+
+    margin-bottom:28px;
+
+    color:#6d7b8b;
+
+    font-size:17px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+.loading-text{
+
+    min-height:26px;
+
+    font-size:18px;
+
+    color:#4d5b68;
+
+    font-weight:500;
+
+    animation:fadeMessage .5s ease;
+
+}
+
+.loading-bar{
+
+    margin-top:28px;
+
+    width:320px;
+
+    height:8px;
+
+    background:#dfe7f1;
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+}
+
+.loading-progress{
+
+    height:100%;
+
+    width:40%;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        90deg,
+        #1b74e4,
+        #00c2ff
+    );
+
+    animation:
+    loadingMove 1.6s infinite ease-in-out;
+
+}
+
+.loading-footer{
+
+    margin-top:45px;
+
+    font-size:14px;
+
+    color:#8b97a5;
+
+    letter-spacing:.4px;
+
+}
+
+@keyframes loadingMove{
+
+    0%{
+
+        width:0%;
+
+    }
+
+    50%{
+
+        width:70%;
+
+    }
+
+    100%{
+
+        width:100%;
+
+    }
+
+}
+
+@keyframes floatLogo{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-8px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeMessage{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(5px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}

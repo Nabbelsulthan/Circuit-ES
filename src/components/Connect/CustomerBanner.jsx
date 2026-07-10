@@ -2,8 +2,12 @@
 
 import "./CustomerBanner.css";
 import { useEffect, useState } from "react";
+import { API_URL } from "../Config/Config";
+
 
 export default function CustomerBanner() {
+
+
 
   const [stats, setStats] =
     useState({
@@ -25,7 +29,7 @@ export default function CustomerBanner() {
       );
 
     fetch(
-      `http://localhost:5001/api/customers/${customerId}/projects`
+      `${API_URL}/api/customers/${customerId}/projects`
     )
       .then((res) => res.json())
       .then((projects) => {
@@ -49,6 +53,8 @@ export default function CustomerBanner() {
         });
 
       });
+
+
 
   }, []);
 
@@ -84,8 +90,14 @@ export default function CustomerBanner() {
       <div className="customer-right">
 
         <div className="banner-stat">
-          <h2>
+          {/* <h2>
             {stats.total}
+          </h2> */}
+
+          <h2>
+
+            {stats.total}
+
           </h2>
           <span>
             Projects
@@ -94,7 +106,9 @@ export default function CustomerBanner() {
 
         <div className="banner-stat">
           <h2>
+
             {stats.completed}
+
           </h2>
           <span>
             Completed
@@ -103,7 +117,9 @@ export default function CustomerBanner() {
 
         <div className="banner-stat">
           <h2>
+
             {stats.ongoing}
+
           </h2>
           <span>
             On Going

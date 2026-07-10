@@ -105,6 +105,37 @@
   font-weight: 600;
 }
 
+
+.dispatch-header {
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 35px;
+
+}
+
+.dispatch-header h1 {
+
+  margin: 0;
+
+  font-size: 36px;
+
+  color: #1f2937;
+
+}
+
+.dispatch-header p {
+
+  margin-top: 10px;
+
+  color: #6b7280;
+
+}
+
 @media (max-width: 768px) {
 
   .dispatch-info {

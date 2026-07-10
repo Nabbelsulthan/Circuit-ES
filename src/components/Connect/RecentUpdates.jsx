@@ -2,6 +2,8 @@
 
 
 import { useEffect, useState } from "react";
+import { API_URL } from "../Config/Config";
+;
 
 export default function RecentUpdates() {
 
@@ -16,7 +18,8 @@ export default function RecentUpdates() {
       );
 
     fetch(
-      `http://localhost:5001/api/customers/${customerId}/projects`
+      `${API_URL}/api/customers/${customerId}/projects`
+
     )
       .then((res) => res.json())
       .then(async (projects) => {
@@ -27,7 +30,7 @@ export default function RecentUpdates() {
 
           const response =
             await fetch(
-              `http://localhost:5001/api/updates/${project.id}`
+              `${API_URL}/api/updates/${project.id}`
             );
 
           const data =
@@ -66,50 +69,65 @@ export default function RecentUpdates() {
 
   return (
 
-    <div className="updates-card">
+  <div className="updates-card">
+
+    <div className="updates-header">
 
       <h3>
-        Recent Updates
+        Recent Activity
       </h3>
 
-      {updates.length === 0 ? (
-
-        <p>
-          No Updates Available
-        </p>
-
-      ) : (
-
-        updates.map(
-          (update) => (
-
-            <div
-              key={update.id}
-              className="update-item"
-            >
-
-              <h4 className="update-project">
-                {update.project_name}
-              </h4>
-
-              <p className="update-text">
-                {update.update_text}
-              </p>
-              <p>
-                {new Date(
-                  update.created_at
-                ).toLocaleDateString()}
-              </p>
-
-            </div>
-
-          )
-        )
-
-      )}
+      <span className="updates-count">
+        {updates.length}
+      </span>
 
     </div>
 
-  );
+    {updates.length === 0 ? (
+
+      <p className="no-updates">
+        No Updates Available
+      </p>
+
+    ) : (
+
+      updates.map((update) => (
+
+        <div
+          key={update.id}
+          className="timeline-item"
+        >
+
+          <div className="timeline-dot"></div>
+
+          <div className="timeline-content">
+
+            <h4 className="update-project">
+              {update.project_name}
+            </h4>
+
+            <p className="update-text">
+              {update.update_text}
+            </p>
+
+            <span className="update-date">
+              🕒 {new Date(update.created_at).toLocaleDateString()}
+            </span>
+
+          </div>
+
+        </div>
+
+      ))
+
+    )}
+
+  </div>
+
+);
+
+
+
+
 
 }

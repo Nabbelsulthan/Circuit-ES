@@ -3,11 +3,11 @@
 
 import "./CustomerPortal.css";
 import { useNavigate } from "react-router-dom";
-import { useState ,useEffect} from "react";
+import { useState, useEffect } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-
+import { API_URL } from "../Config/Config";
 
 
 export default function CustomerPortal() {
@@ -15,6 +15,8 @@ export default function CustomerPortal() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loggingIn, setLoggingIn] =
+    useState(false);
 
 
   const [error, setError] = useState("");
@@ -28,114 +30,182 @@ export default function CustomerPortal() {
   }, [navigate]);
 
 
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
+  // const handleLogin =
+  //   async (e) => {
 
-  //   if (!companyId || !username || !password) {
-  //     setError("Please fill all fields.");
-  //     return;
-  //   }
+  //     e.preventDefault();
 
-  //   if (
-  //     companyId === "BITSOL001" &&
-  //     username === "bitsol" &&
-  //     password === "bitsol123"
-  //   ) {
-  //     localStorage.setItem("customer", "Bitsol");
-  //     localStorage.setItem("isLoggedIn", "true");
+  //     if (
+  //       !username ||
+  //       !password
+  //     ) {
 
-  //     navigate("/ces-connect");
-  //   } else {
-  //     setError("Invalid credentials.");
-  //   }
-  // };
+  //       setError(
+  //         "Please fill all fields."
+  //       );
+
+  //       return;
+  //     }
+
+  //     try {
+
+  //       const response =
+  //         await fetch(
+  //           `${API_URL}/api/customer-auth/login`,
+  //           {
+  //             method: "POST",
+
+  //             headers: {
+  //               "Content-Type":
+  //                 "application/json",
+
+  //             },
+
+  //             body:
+  //               JSON.stringify({
+  //                 username,
+  //                 password,
+  //               }),
+  //           }
+  //         );
+
+  //       const data =
+  //         await response.json();
+
+  //       if (
+  //         response.ok
+  //       ) {
+
+  //         localStorage.setItem(
+  //           "token",
+  //           data.token
+  //         );
 
 
+  //         localStorage.setItem(
+  //           "customerId",
+  //           data.customerId
+  //         );
 
+  //         localStorage.setItem(
+  //           "customerName",
+  //           data.companyName
+  //         );
+
+  //         localStorage.setItem(
+  //           "isLoggedIn",
+  //           "true"
+  //         );
+
+  //         navigate(
+  //           "/ces-connect"
+  //         );
+
+  //       } else {
+
+  //         setError(
+  //           data.message
+  //         );
+
+  //       }
+
+  //     } catch (error) {
+
+  //       console.error(error);
+
+  //       setError(
+  //         "Server Error"
+  //       );
+
+  //     }
+
+  //   };
 
   const handleLogin =
-  async (e) => {
+    async (e) => {
 
-    e.preventDefault();
+      e.preventDefault();
 
-    if (
-      !username ||
-      !password
-    ) {
+      setError("");
 
-      setError(
-        "Please fill all fields."
-      );
-
-      return;
-    }
-
-    try {
-
-      const response =
-        await fetch(
-          "http://localhost:5001/api/customer-auth/login",
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json",
-            },
-
-            body:
-              JSON.stringify({
-                username,
-                password,
-              }),
-          }
-        );
-
-      const data =
-        await response.json();
-
-      if (
-        response.ok
-      ) {
-
-        localStorage.setItem(
-          "customerId",
-          data.customerId
-        );
-
-        localStorage.setItem(
-          "customerName",
-          data.companyName
-        );
-
-        localStorage.setItem(
-          "isLoggedIn",
-          "true"
-        );
-
-        navigate(
-          "/ces-connect"
-        );
-
-      } else {
+      if (!username || !password) {
 
         setError(
-          data.message
+          "Please fill all fields."
         );
+
+        return;
 
       }
 
-    } catch (error) {
+      setLoggingIn(true);
 
-      console.error(error);
+      try {
 
-      setError(
-        "Server Error"
-      );
+        const response =
+          await fetch(
+            `${API_URL}/api/customer-auth/login`,
+            {
+              method: "POST",
 
-    }
+              headers: {
+                "Content-Type":
+                  "application/json",
+              },
 
-  };
+              body: JSON.stringify({
+                username,
+                password,
+              }),
+            }
+          );
+
+        const data =
+          await response.json();
+
+        if (response.ok) {
+
+          localStorage.setItem(
+            "token",
+            data.token
+          );
+
+          localStorage.setItem(
+            "customerId",
+            data.customerId
+          );
+
+          localStorage.setItem(
+            "customerName",
+            data.companyName
+          );
+
+          localStorage.setItem(
+            "isLoggedIn",
+            "true"
+          );
+
+          navigate("/ces-connect");
+
+        } else {
+
+          setError(data.message);
+
+          setLoggingIn(false);
+
+        }
+
+      } catch (error) {
+
+        console.error(error);
+
+        setError("Server Error");
+
+        setLoggingIn(false);
+
+      }
+
+    };
 
   return (
     <div className="portal-page">
@@ -193,9 +263,15 @@ export default function CustomerPortal() {
                 type="text"
                 placeholder="Enter your username"
                 value={username}
-                onChange={(e) =>
-                  setUsername(e.target.value)
-                }
+                disabled={loggingIn}
+                autoFocus
+                onChange={(e) => {
+
+                  setUsername(e.target.value);
+
+                  setError("");
+
+                }}
               />
             </div>
 
@@ -212,14 +288,20 @@ export default function CustomerPortal() {
                   }
                   placeholder="Enter your password"
                   value={password}
-                  onChange={(e) =>
-                    setPassword(e.target.value)
-                  }
+                  disabled={loggingIn}
+                  onChange={(e) => {
+
+                    setPassword(e.target.value);
+
+                    setError("");
+
+                  }}
                 />
 
                 <button
                   type="button"
                   className="password-toggle"
+                  disabled={loggingIn}
                   onClick={() =>
                     setShowPassword(
                       !showPassword
@@ -246,8 +328,25 @@ export default function CustomerPortal() {
             <button
               type="submit"
               className="login-btn"
+              disabled={loggingIn}
             >
-              Login to CES Connect
+
+              {loggingIn ? (
+
+                <>
+
+                  <span className="button-spinner"></span>
+
+                  Connecting to CES Connect...
+
+                </>
+
+              ) : (
+
+                "Login to CES Connect"
+
+              )}
+
             </button>
 
           </form>
@@ -255,7 +354,7 @@ export default function CustomerPortal() {
           <div className="portal-help">
             Need Access?
             <a href="/contact">
-              Contact Circuits ES
+              Contact CircuitsES
             </a>
           </div>
 

@@ -3,11 +3,14 @@
 
 import "./DispatchStatus.css";
 import { useEffect, useState } from "react";
+import { API_URL } from "./Config/Config";
+
 
 export default function DispatchStatus() {
 
   const [projects, setProjects] =
     useState([]);
+
 
   const [selectedProject,
     setSelectedProject] =
@@ -21,12 +24,19 @@ export default function DispatchStatus() {
       );
 
     fetch(
-      `http://localhost:5001/api/customers/${customerId}/projects`
+      `${API_URL}/api/customer-projects/customer/${customerId}`
     )
       .then((res) => res.json())
       .then((data) => {
 
+        console.log("Projects:", data);
+
         setProjects(data);
+
+      })
+      .catch((error) => {
+
+        console.error(error);
 
       });
 
@@ -36,9 +46,24 @@ export default function DispatchStatus() {
 
     <div className="dispatch-container">
 
-      <h2>
-        Select Project
-      </h2>
+      <div className="dispatch-header">
+
+        <div>
+
+          <h1>
+            Dispatch Status
+          </h1>
+
+          <p>
+            Track transportation,
+            shipment and delivery
+            information for all your
+            active projects.
+          </p>
+
+        </div>
+
+      </div>
 
       {!selectedProject ? (
 
@@ -63,7 +88,7 @@ export default function DispatchStatus() {
                 <span className="status-badge">
                   {project.dispatch_status}
                 </span>
-{/* 
+                {/* 
                 <p>
                   {project.dispatch_status}
                 </p> */}

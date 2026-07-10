@@ -9,11 +9,23 @@ import CustomerBanner from "./Connect/CustomerBanner";
 import ProjectDetails from "./Connect/ProjectDetails";
 import CompletedProjectCard
   from "./Connect/CompletedProjectCard";
-
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { API_URL } from "./Config/Config";
+import ConnectLoading from "./Connect/ConnectLoading";
+
 
 export default function CESConnect() {
+
+  const [loading, setLoading] =
+    useState(true);
+
+
+  const [showActive, setShowActive] =
+    useState(true);
+
+  const [showCompleted, setShowCompleted] =
+    useState(false);
 
   const navigate = useNavigate();
 
@@ -41,7 +53,7 @@ export default function CESConnect() {
     }
 
     fetch(
-      `http://localhost:5001/api/customers/${customerId}/projects`
+      `${API_URL}/api/customers/${customerId}/projects`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -52,20 +64,19 @@ export default function CESConnect() {
         );
 
         setProjects(data);
+        setLoading(false);
 
       })
       .catch((error) => {
 
         console.error(error);
+        setLoading(false);
 
       });
 
   }, [navigate]);
 
-  const customer =
-    localStorage.getItem(
-      "customerName"
-    ) || "Customer";
+
 
   const activeProjects =
     projects.filter(
@@ -104,6 +115,11 @@ export default function CESConnect() {
 
   };
 
+  if (loading) {
+
+    return <ConnectLoading />;
+
+  }
 
 
   return (
@@ -116,16 +132,9 @@ export default function CESConnect() {
 
           <div>
 
-            <h2 className="welcome-title">
-              Welcome, {customer}
-            </h2>
-
             <p className="welcome-subtitle">
               Your centralized hub for project tracking, documentation, dispatch updates and progress monitoring.
             </p>
-
-
-
           </div>
 
           <button
@@ -147,20 +156,64 @@ export default function CESConnect() {
 
           <div className="completed-projects-section">
 
-            <h2 className="projects-section-title" >
-              Active Projects
-            </h2>
 
-            {activeProjects.map(
-              (project) => (
+            <div
+              className="projects-section-header clickable"
+              onClick={() =>
+                setShowActive(!showActive)
+              }
+            >
+
+              <div className="section-heading">
+
+                <span className="section-icon active-icon">
+                  ●
+                </span>
+
+                <h2>
+                  Active Projects
+                </h2>
+
+              </div>
+
+              <div className="section-right">
+
+                <span className="section-count">
+
+                  {activeProjects.length}
+
+                </span>
+
+                {/* <span className="expand-icon">
+
+                  {showActive ? "▼" : "▶"}
+
+                </span> */}
+
+                <span
+                  className={`expand-icon ${showActive ? "expanded" : ""
+                    }`}
+                >
+                  ▶
+                </span>
+
+              </div>
+
+            </div>
+
+            {showActive &&
+
+              activeProjects.map((project) => (
 
                 <ProjectCard
                   key={project.id}
                   project={project}
                 />
 
-              )
-            )}
+              ))
+
+            }
+
 
             {completedProjects.length > 0 && (
 
@@ -168,25 +221,64 @@ export default function CESConnect() {
 
                 <br />
 
-                <h2
-                  className="projects-section-title"
+                <div
+                  className="projects-section-header clickable"
+                  onClick={() =>
+                    setShowCompleted(!showCompleted)
+                  }
                 >
-                  Completed Projects
-                  (
-                  {completedProjects.length}
-                  )
-                </h2>
 
-                {completedProjects.map(
-                  (project) => (
+                  <div className="section-heading">
+
+                    <span className="section-icon completed-icon">
+                      ✓
+                    </span>
+
+                    <h2>
+                      Completed Projects
+                    </h2>
+
+                  </div>
+
+                  <div className="section-right">
+
+                    <span className="section-count completed-count">
+
+                      {completedProjects.length}
+
+                    </span>
+
+                    {/* <span className="expand-icon">
+
+                      {showCompleted ? "▼" : "▶"}
+
+                    </span> */}
+
+                            <span
+                  className={`expand-icon ${showCompleted ? "expanded" : ""
+                    }`}
+                >
+                  ▶
+                </span>
+
+
+
+                  </div>
+
+                </div>
+
+                {showCompleted &&
+
+                  completedProjects.map((project) => (
 
                     <CompletedProjectCard
                       key={project.id}
                       project={project}
                     />
 
-                  )
-                )}
+                  ))
+
+                }
 
               </>
 
