@@ -1,0 +1,30 @@
+.project-card {
+  background: white;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, .06);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.project-company {
+  color: #666;
+  margin-top: 5px;
+}
+
+.progress-pill {
+  background: #eaf7e5;
+  color: #2e7d32;
+  padding: 10px 22px;
+  border-radius: 999px;
+  font-weight: 600;
+}

@@ -1,7 +1,7 @@
 
 
 import ProgressTimeline from "./ProgressTimeline";
-
+import "./ProjectCard.css";
 
 const stageMap = {
   Design: 0,
