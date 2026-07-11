@@ -64,6 +64,13 @@ export default function CESConnect() {
         );
 
         setProjects(data);
+
+        const activeCount = data.filter(
+          project => project.status !== "Delivered"
+        ).length;
+
+        // Collapse for multiple active projects, expand for one or none
+        setShowActive(activeCount <= 1);
         setLoading(false);
 
       })
@@ -146,11 +153,14 @@ export default function CESConnect() {
 
         </div>
 
-        <CustomerBanner />
+        
+
+        <CustomerBanner projects={projects} />
 
         <ProjectDetails />
 
-        <StatsCards />
+        <StatsCards projects={projects} />
+
 
         <div className="dashboard-grid">
 
@@ -183,12 +193,6 @@ export default function CESConnect() {
                   {activeProjects.length}
 
                 </span>
-
-                {/* <span className="expand-icon">
-
-                  {showActive ? "▼" : "▶"}
-
-                </span> */}
 
                 <span
                   className={`expand-icon ${showActive ? "expanded" : ""
@@ -248,18 +252,12 @@ export default function CESConnect() {
 
                     </span>
 
-                    {/* <span className="expand-icon">
-
-                      {showCompleted ? "▼" : "▶"}
-
-                    </span> */}
-
-                            <span
-                  className={`expand-icon ${showCompleted ? "expanded" : ""
-                    }`}
-                >
-                  ▶
-                </span>
+                    <span
+                      className={`expand-icon ${showCompleted ? "expanded" : ""
+                        }`}
+                    >
+                      ▶
+                    </span>
 
 
 
@@ -286,7 +284,7 @@ export default function CESConnect() {
 
           </div>
 
-          <RecentUpdates />
+          <RecentUpdates projects={projects} />
 
         </div>
 

@@ -11,6 +11,9 @@ export default function ProjectDetails() {
   const [projects, setProjects] =
     useState([]);
 
+  const [loading, setLoading] =
+    useState(true);
+
   useEffect(() => {
 
     const customerId =
@@ -20,7 +23,6 @@ export default function ProjectDetails() {
 
     fetch(
       `${API_URL}/api/customers/${customerId}/projects`
-      
     )
       .then((res) => res.json())
       .then((data) => {
@@ -50,9 +52,43 @@ export default function ProjectDetails() {
           sortedProjects
         );
 
+        setLoading(false);
+
+      })
+      .catch((error) => {
+
+        console.error(error);
+
+        setLoading(false);
+
       });
 
   }, []);
+
+
+  if (loading) {
+
+    return (
+
+      <div className="projects-wrapper">
+
+        <div className="project-details-card">
+
+          <div className="project-header-skeleton">
+
+            <div className="skeleton-line title"></div>
+
+            <div className="skeleton-line subtitle"></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    );
+
+  }
 
   return (
 
