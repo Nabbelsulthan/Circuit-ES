@@ -1,0 +1,64 @@
+.ces-connect-float {
+  position: fixed;
+  right: 25px;
+  bottom: 100px;
+
+  display: flex;
+  align-items: center;
+
+  background: linear-gradient(
+    135deg,
+    #111827,
+    #55b532
+  );
+
+  color: white;
+  text-decoration: none;
+
+  padding: 14px 20px;
+
+  border-radius: 50px;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.25);
+
+  z-index: 99999;
+
+  transition: all .3s ease;
+}
+
+.ces-connect-float:hover {
+  transform: translateY(-4px);
+}
+
+.portal-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 12px;
+
+  font-size: 20px;
+}
+
+.ces-connect-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.portal-label {
+  font-size: 10px;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.portal-name {
+  font-size: 16px;
+  font-weight: 700;
+}

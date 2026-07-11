@@ -647,6 +647,10 @@
   transition: .35s;
 
   cursor: pointer;
+<<<<<<< HEAD
+=======
+
+>>>>>>> development
 }
 
 .gallery-card:hover .gallery-image {
