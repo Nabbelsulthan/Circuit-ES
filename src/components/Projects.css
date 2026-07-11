@@ -376,3 +376,100 @@
   max-width: 420px;
 
 }
+/* mobile */
+
+@media (max-width: 900px) {
+
+  .projects-page{
+
+    padding:20px 15px;
+
+  }
+
+  .projects-header{
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+    gap:24px;
+
+    padding:28px 22px;
+
+  }
+
+  .projects-header h1{
+
+    font-size:32px;
+
+    line-height:1.2;
+
+  }
+
+  .projects-header p{
+
+    max-width:100%;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+  }
+
+  .projects-summary{
+
+    min-width:120px;
+
+    width:120px;
+
+    height:120px;
+
+    border-radius:20px;
+
+  }
+
+  .projects-count{
+
+    font-size:40px;
+
+  }
+
+  .projects-summary small{
+
+    font-size:13px;
+
+  }
+
+  .projects-grid{
+
+    grid-template-columns:1fr;
+
+    gap:18px;
+
+  }
+
+  .project-card{
+
+    padding:22px;
+
+  }
+
+  .project-card h2{
+
+    font-size:21px;
+
+    margin:20px 0;
+
+  }
+
+  .project-info{
+
+    grid-template-columns:1fr;
+
+    gap:14px;
+
+  }
+
+}

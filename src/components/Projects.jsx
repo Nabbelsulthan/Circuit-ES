@@ -52,6 +52,8 @@ export default function Projects() {
 
     }
 
+ 
+
     return (
 
         <div className="projects-page">
@@ -76,9 +78,9 @@ export default function Projects() {
 
                 </div>
 
-          
 
-                <div className="projects-summary">
+
+             <div className="projects-summary">
 
                     <FolderCopyRoundedIcon
                         sx={{
@@ -95,6 +97,10 @@ export default function Projects() {
                     <small>Total Projects</small>
 
                 </div>
+
+
+
+
 
             </div>
             {projects.length === 0 ? (
