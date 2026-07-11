@@ -144,6 +144,7 @@
 .form-group input {
   width: 100%;
   padding: 14px;
+  font-size: 16px;
 
   border: 1px solid #ddd;
 
@@ -204,6 +205,8 @@
 .password-wrapper input {
   width: 100%;
   padding: 14px 50px 14px 14px;
+
+  font-size: 16px;
 
   border: 1px solid #ddd;
   border-radius: 12px;
@@ -319,21 +322,72 @@
 
 
 
-@media(max-width: 900px) {
+@media (max-width: 900px) {
+
+  .portal-page {
+
+    padding: 30px 16px;
+
+    align-items: flex-start;
+
+    overflow-y: auto;
+
+  }
 
   .portal-container {
+
+    width: 100%;
+
     grid-template-columns: 1fr;
+
+    gap: 30px;
+
   }
 
   .portal-info {
+
     text-align: center;
+
   }
 
   .portal-logo {
-    margin: auto auto 20px;
+
+    width: 170px;
+
+    margin: 0 auto 20px;
+
   }
 
   .portal-info h1 {
-    font-size: 3rem;
+
+    font-size: 2.5rem;
+
   }
+
+  .portal-info h2 {
+
+    font-size: 1.2rem;
+
+  }
+
+  .portal-info p {
+
+    font-size: 15px;
+
+  }
+
+  .portal-features {
+
+    grid-template-columns: 1fr;
+
+  }
+
+  .portal-card {
+
+    padding: 28px 22px;
+
+  }
+
 }
+
+
