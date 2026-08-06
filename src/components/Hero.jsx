@@ -4,7 +4,7 @@
 import "./Hero.css";
 // import heroImg from "../assets/img1.jpeg";
 import heroImg from "../assets/hero-img.jpeg";
-import Enquiry from "./Enquiry";
+// import Enquiry from "./Enquiry";
 
 const Hero = () => {
   return (
@@ -73,7 +73,7 @@ const Hero = () => {
 
       <br />
 
-      <Enquiry />
+      {/* <Enquiry /> */}
     </section>
   );
 };

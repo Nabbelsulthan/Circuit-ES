@@ -224,8 +224,8 @@ Message: ${message || "N/A"}
 
                         <h4>Factory Address</h4>
                         <p>
-                            No.553/141,<br/>
-                            Begapalli-Nallur Agaraharam Road, Begapalli Village,<br/>
+                            No.553/141,Begapalli Spicot-1,<br/>
+                            Begapalli-Nallur Agaraharam Road,<br/>
                             Hosur-635126,<br/>
                             Krishnagiri District,<br/>
                             Tamil Nadu.
